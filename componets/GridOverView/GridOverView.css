@@ -18,6 +18,7 @@ body, html {
   overflow-y: hidden;
   scroll-behavior: smooth;
   align-items: center;
+  background-color: white;
 }
   
   .data-details-section {
@@ -64,12 +65,12 @@ body, html {
   .data-overview-images img {
     object-fit: cover;
     border-radius: 1.5rem;
-    width: 80vw;
+    width: 72vw;
     height: 70vh;
     flex-shrink: 0;
   }
   .grid-overview-connect{
-    width: 35vw; /* Fixed width for left text panel */
+    width: 35vw;
     padding: 4vw;
     padding-top: 9%;
     scroll-snap-align: start; /* Optional: for snapping */
