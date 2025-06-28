@@ -64,7 +64,7 @@ function GridOverView() {
         <hr className="grid-overview-hr-line"/>
         <h1>{nextProject.head}</h1>
         <img src={nextProject.image} alt={nextProject.head}  style={{ cursor: 'pointer' }} onClick={() => navigate(`/${nextProject.head}`)}/>
-        <h6>NEXT PROJECT</h6>
+        <h6 onClick={() => navigate(`/${nextProject.head}`)} style={{cursor:"pointer"}}>NEXT PROJECT</h6>
       </div>
 
     </div>
