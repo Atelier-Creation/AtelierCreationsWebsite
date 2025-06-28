@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./PortfolioSection.css";
@@ -373,7 +373,7 @@ const PortfolioSection = () => {
 
       </div>
       {/* Featured Work */}
-      <div className="work-holder" ref={revealSectionRef}>
+      <div className="work-holder" ref={revealSectionRef} style={{marginTop:'40rem'}}>
         <section className="s2">
           <div className="text-head">
             <h1 className="featured-work">Featured Work</h1>

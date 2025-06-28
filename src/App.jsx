@@ -68,6 +68,7 @@ function App(){
         <Route path="/Helpful-Content-King" element={<Blog1 />} />
         <Route path="/the-role-ai-modern-design" element={<BlogDesignPage2 />} />
         <Route path="/branding" element={<Branding />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/ServiceOne" element={<ServiceOne />} />
         <Route path="/:name" element={<GridOverView/>} />
       </Routes>
