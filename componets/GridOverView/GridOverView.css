@@ -80,40 +80,53 @@ body, html {
     margin-left: 5%;    /* Optional: background for visibility */
   }
   .grid-overview-connect h3{
-    color: white;
+    color: var(--neutral--white);
+    font-size: 2vw;
+    font-weight: 500;
+    margin-bottom: 20px;
   }
   .grid-overview-connect p{
-    color: rgb(207, 206, 206);
-    width: 400px;
-    font-size: 16px;
-    margin: 0;
+    color: var(--neutral--neutral-lighter);
+    text-align: left;
+    font-size: 1.1vw;
+    font-weight: 400;
+    line-height: 130%;
   }
   .grid-overview-hr-line{
     color: white;
   }
   .grid-overview-connect img{
     width: 400px;
-    height: 200px;
+    height: 25vh;
+    object-fit: cover;
   }
   .grid-overview-connect h1{
-    font-size: 60px;
-    color: gray;
+    font-size: 4vw;
+    font-weight: 500;
+    color: var(--neutral--neutral-darker);
+    margin: 15px 0;
   }
   .grid-overview-connect-link{
-    color: white;
+    color: var(--neutral--white);
     display: flex;
-    align-items: center;
-    font-size: 30px;
-    gap: 20px;
+    align-items:baseline;
+    font-size: 1.8vw;
+    gap: 16px;
     margin: 20px 0;
   }
   .grid-overview-connect h6{
-    margin-top: 30px;
-    font-size: 20px;
-    color: yellowgreen;
+    color: var(--equispace-brand-color--artyclick-amber);
+    text-transform: uppercase;
+    width: auto;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    margin-top: 20px;
+    font-weight: 500;
   }
   .grid-overview-connect-link a{
     color: white;
+    font-size: 1.8vw;
   }
   .grid-overview-container::-webkit-scrollbar {
   display: none;

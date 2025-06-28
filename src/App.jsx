@@ -69,7 +69,7 @@ function App(){
         <Route path="/the-role-ai-modern-design" element={<BlogDesignPage2 />} />
         <Route path="/branding" element={<Branding />} />
         <Route path="/ServiceOne" element={<ServiceOne />} />
-        <Route path="/:name" element={<GridOverView/>} />
+        <Route path="/:projectName" element={<GridOverView />} />
       </Routes>
       </BrowserRouter>
 

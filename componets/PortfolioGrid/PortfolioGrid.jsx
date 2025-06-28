@@ -3,9 +3,9 @@ import './PortfolioGrid.css'
 import { useNavigate } from 'react-router-dom'
 import gridImage1 from '../../src/assets/portfolioGridImage/gridImage1.jpg'
 import gridImage2 from '../../src/assets/portfolioGridImage/gridImage2.webp'
-const gridData = [
+export const gridData = [
     {image : gridImage1 , descrip : "TACKTILE INSTALLIZATION-BRAILLE SIGNAGES",head : "IBM RPWD"},
-    {image : gridImage2 , descrip : "TACKTILE INSTALLIZATION-BRAILLE SIGNAGES",head : "IBM RPWD"},
+    {image : gridImage2 , descrip : "TACKTILE INSTALLIZATION-BRAILLE SIGNAGES",head : "IBM"},
 ]
 function PortfolioGrid() {
     const navigate = useNavigate()

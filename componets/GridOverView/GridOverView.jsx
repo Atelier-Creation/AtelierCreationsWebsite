@@ -4,8 +4,13 @@ import image1 from '../../src/assets/portfolioGridImage/gridImage1.jpg'
 import image2 from '../../src/assets/portfolioGridImage/image1.jpg'
 import image3 from '../../src/assets/portfolioGridImage/image2.jpg'
 import image4 from '../../src/assets/portfolioGridImage/image3.jpg'
+import { gridData } from "../PortfolioGrid/PortfolioGrid";
+import { useNavigate } from "react-router";
+import { useParams } from "react-router";
 const images = [image1,image2,image3,image4]
 function GridOverView() {
+    const { projectName } = useParams();
+    const navigate = useNavigate();
     const scrollContainer = useRef(null);
     useEffect(() => {
         const container = scrollContainer.current;
@@ -21,6 +26,9 @@ function GridOverView() {
     
         return () => container.removeEventListener("wheel", onWheel);
       }, []);
+      const currentIndex = gridData.findIndex(item => item.head === projectName);
+      const nextIndex = (currentIndex + 1) % gridData.length; // loop
+      const nextProject = gridData[nextIndex];
   return (
     <div className='grid-overview-container'ref={scrollContainer}>
       <div className='data-details-section'>
@@ -51,11 +59,11 @@ function GridOverView() {
         <p>Tell us about your business. Let&apos;s get this conversation started. Fill in the form or send us an email.</p>
         <div className="grid-overview-connect-link">
             <i className="bi bi-arrow-right"></i>
-            <a href="/contact-us">Contactus@.in</a>
+            <a href="/contact-us">contactus@.in</a>
         </div>
         <hr className="grid-overview-hr-line"/>
-        <h1>IKEA</h1>
-        <img src={image1}/>
+        <h1>{nextProject.head}</h1>
+        <img src={nextProject.image} alt={nextProject.head}  style={{ cursor: 'pointer' }} onClick={() => navigate(`/${nextProject.head}`)}/>
         <h6>NEXT PROJECT</h6>
       </div>
 
