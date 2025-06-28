@@ -70,7 +70,7 @@ function App(){
         <Route path="/branding" element={<Branding />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/ServiceOne" element={<ServiceOne />} />
-        <Route path="/:name" element={<GridOverView/>} />
+        <Route path="/:projectName" element={<GridOverView />} />
       </Routes>
       </BrowserRouter>
 
