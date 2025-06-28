@@ -4744,6 +4744,7 @@ figcaption {
   position: relative;
   inset: 20rem 0 0;
   overflow: visible;
+  transition: transform .3s ease-out;
   transform: translate(0, -50%);
 }
 
@@ -6351,7 +6352,7 @@ figcaption {
   padding-right: 4vw;
   display: flex;
   position: relative;
-  top: -121px;
+  top: -200px;
 }
 
 .review1-copy {
@@ -6396,7 +6397,7 @@ figcaption {
 .review2-copy {
   z-index: -3;
   grid-column-gap: 14px;
-  opacity: 1;
+  opacity: 1 !important;
   background-color: #f0f1f9;
   border: .970245px solid #cacde2;
   border-radius: 7.76196px;
@@ -6451,7 +6452,7 @@ figcaption {
 .review1-copy1-copy {
   z-index: -2;
   grid-column-gap: 14px;
-  opacity: 1;
+  opacity: 1 !important;
   background-color: #f0f1f9;
   border: .970245px solid #cacde2;
   border-radius: 7.76196px;
@@ -6472,7 +6473,7 @@ figcaption {
 .review-holder-5 {
   grid-column-gap: 35vw;
   grid-row-gap: 35vw;
-  opacity: 1;
+  opacity: 1 !important;
   flex: 0 auto;
   justify-content: center;
   align-items: center;
@@ -6485,7 +6486,7 @@ figcaption {
 .review1-copy {
   z-index: -2;
   grid-column-gap: 14px;
-  opacity: 1;
+  opacity: 1 !important;
   background-color: #f0f1f9;
   border: .970245px solid #cacde2;
   border-radius: 7.76196px;
@@ -6542,7 +6543,7 @@ figcaption {
 .review2 {
   z-index: -2;
   grid-column-gap: 14px;
-  opacity: 1;
+  opacity: 1 !important;
   background-color: #f0f1f9;
   border: .970245px solid #cacde2;
   border-radius: 7.76196px;
