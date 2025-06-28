@@ -14,6 +14,7 @@ import SocialMediaSec from "../componets/Social-media-sec"
 import CaseStudy from "../componets/case-study"
 // import FreelancerHub from "../componets/freelancers-hub"
 import {Helmet} from "react-helmet";
+import PortfolioGrid from "../componets/PortfolioGrid/PortfolioGrid"
 
 
 const Home = () => {
@@ -41,6 +42,7 @@ const Home = () => {
       <Contacts />
       <SocialMediaSec />
       {/* <FreelancerHub /> */}
+      <PortfolioGrid/>
       <Footer />
     </>
   )
