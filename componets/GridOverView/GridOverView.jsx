@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import './GridOverView.css'
 import image1 from '../../src/assets/portfolioGridImage/gridImage1.jpg'
 import image2 from '../../src/assets/portfolioGridImage/image1.jpg'
@@ -47,8 +47,8 @@ function GridOverView() {
         ))}
       </div>
       <div className="grid-overview-connect">
-        <h3>Let's Connect</h3>
-        <p>Tell us about your business. Let's get this conversation started. Fill in the form or send us an email.</p>
+        <h3>Let&apos;s Connect</h3>
+        <p>Tell us about your business. Let&apos;s get this conversation started. Fill in the form or send us an email.</p>
         <div className="grid-overview-connect-link">
             <i className="bi bi-arrow-right"></i>
             <a href="/contact-us">Contactus@.in</a>
