@@ -25,7 +25,7 @@ body, html {
     padding: 4vw;
     scroll-snap-align: start; /* Optional: for snapping */
     flex-shrink: 0;           /* Prevent shrinking */
-    background: #fdfdfd;      /* Optional: background for visibility */
+    /* background: #fdfdfd; */
   }
   
   .data-details-section p {
@@ -34,6 +34,7 @@ body, html {
     margin: 0;
     color: black;
   }
+  
   
   .data-details-para {
     display: flex;
@@ -113,3 +114,6 @@ body, html {
   .grid-overview-connect-link a{
     color: white;
   }
+  .grid-overview-container::-webkit-scrollbar {
+  display: none;
+}

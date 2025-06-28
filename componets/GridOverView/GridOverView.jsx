@@ -50,7 +50,7 @@ function GridOverView() {
         <h3>Let's Connect</h3>
         <p>Tell us about your business. Let's get this conversation started. Fill in the form or send us an email.</p>
         <div className="grid-overview-connect-link">
-            <i class="bi bi-arrow-right"></i>
+            <i className="bi bi-arrow-right"></i>
             <a href="/contact-us">Contactus@.in</a>
         </div>
         <hr className="grid-overview-hr-line"/>
