@@ -12,7 +12,7 @@ import DiscoverUs from "../componets/discover-us"
 import Contacts from "../componets/contacts"
 import SocialMediaSec from "../componets/Social-media-sec"
 import CaseStudy from "../componets/case-study"
-import FreelancerHub from "../componets/freelancers-hub"
+// import FreelancerHub from "../componets/freelancers-hub"
 import {Helmet} from "react-helmet";
 import PortfolioGrid from "../componets/PortfolioGrid/PortfolioGrid"
 
@@ -41,8 +41,7 @@ const Home = () => {
       {/* <DiscoverUs /> */}
       <Contacts />
       <SocialMediaSec />
-      <FreelancerHub />
-      <PortfolioGrid/>
+      {/* <FreelancerHub /> */}
       <Footer />
     </>
   )

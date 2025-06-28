@@ -4,19 +4,25 @@ import { Link } from "react-router-dom";
 
 function Header(){
    useEffect(() => {
-      const nav = document.getElementById('nav');
-      let top = window.scrollY;
-      window.addEventListener("scroll", () => {
-      
-          if(top < window.scrollY){
-            nav.classList.add("hide-nav");
-          }else{
-            nav.classList.remove("hide-nav");
-          }
-    
-        top = window.scrollY;
-            
-        })
+     const nav = document.getElementById('nav');
+let top = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  if (top < window.scrollY) {
+    nav.classList.add("hide-nav");
+  } else {
+    nav.classList.remove("hide-nav");
+  }
+
+  // Update scroll position
+  top = window.scrollY;
+
+  // Remove section ID from URL if present
+  if (window.location.hash) {
+    history.replaceState("", document.title, window.location.pathname + window.location.search);
+  }
+});
+
     }, []);
    return (
     <>
@@ -33,7 +39,7 @@ function Header(){
                   <li><a href="/#about-us">About</a></li>
                   <li> <a href="/#services">Services</a></li>
                   <li className="nav-pages"><a href="/#case-study">Case study</a></li>
-                  <li> <a href="/#freelancers-hub">Careers</a></li>
+                  <li> <a href="https://forms.gle/Z93DK6jRqdWmGGxZ9" target="_blank" rel="noopener noreferrer">Careers</a></li>
                   <li><a href="/#blogs">Blogs</a></li>
                </ul>
 

@@ -1,6 +1,6 @@
 
 import Header from "../componets/header"
-import FreelancerHub from "../componets/freelancers-hub"
+// import FreelancerHub from "../componets/freelancers-hub"
 import Footer from "../componets/footer"
 import SoftwareDevelopment from "../src/assets/services/software-development.svg"
 
@@ -109,7 +109,7 @@ const digitalMarketing = () => {
           </div>
         </div>
       </section>
-      <FreelancerHub />
+      {/* <FreelancerHub /> */}
       <Footer />
       </div>
     </>

@@ -1,7 +1,7 @@
 // import Services from "../componets/services"
 import Header from "../componets/header"
 // import LandingPage from "../componets/landing-page"
-import FreelancerHub from "../componets/freelancers-hub"
+// import FreelancerHub from "../componets/freelancers-hub"
 import Footer from "../componets/footer"
 // import SEO from "../src/assets/services/SEO.svg";
 // import serviceCardIcon from "../src/assets/services/service-card-icon.svg";
@@ -116,7 +116,7 @@ const BusinessSoftware = () => {
           </div>
         </div>
       </section>
-      <FreelancerHub />
+      {/* <FreelancerHub /> */}
       <Footer />
       </div>
     </>

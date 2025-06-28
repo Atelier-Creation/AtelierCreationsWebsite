@@ -17,7 +17,7 @@ const Contacts = () => {
            </h4>
 
            <div className="contact-us-para">
-            <span>Thank you for getting in touch!</span>
+            <span>Thank you for getting in touch! </span>
             <span>Kindly. </span>
             <span>Fill the form, have a great day!</span>
            </div>

@@ -118,7 +118,7 @@ const SMM = () => {
             spaceBetween={0}
             slidesPerView={3}
             loop={true}
-            // autoplay={{ delay: 3000, disableOnInteraction: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: true }}
             navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}

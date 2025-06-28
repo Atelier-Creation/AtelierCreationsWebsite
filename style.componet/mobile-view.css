@@ -88,9 +88,13 @@
         grid-template-columns: 100%;
     }
     .contact-us-tit{
-        font-size: 40px;
+        font-size: 32px;
         line-height: normal;
         width: fit-content;
+    }
+    .contact-us-para span{
+        display: inline;
+        font-size: 18px;
     }
     .bg-txt-1{
         font-size: 56px;
@@ -207,7 +211,7 @@
         position: relative;
         top: 0px;
         padding: 9rem 0rem 9rem 0rem;
-        z-index: -1;
+        /* z-index: -1; */
         margin-top: 1rem;
     }
     @keyframes landing-page-slide1{
@@ -571,9 +575,6 @@
     .footer-quick-col-1{
         width: 100%;
     }
-    .footer-quick-col-3{
-        width: 100%;
-    }
     .get-touch-w-us, .location-tit, .footer-quick-tit-1, .footer-quick-tit-2, .footer-quick-tit-3{
         font-size: 20px;
     }
@@ -615,6 +616,10 @@
     .banner-h1{
         font-size: 30px;
         line-height: 40px;
+        background: #0000008a;
+        width: 100%;
+        height: 100%;
+        padding: 20%;
     }
     .social-sub-container{
         grid-template-columns: 100%;
@@ -662,8 +667,21 @@
     .servi-point-sec-left-box p{
         text-align: justify;
     }
+    .servi-point-sec-left-box h2{
+        margin: 0;
+        padding: 0;
+    }
+    .service-detailed-sec-tit{
+        text-align: left !important;
+        padding: 0rem 0rem 0rem 2rem;
+        margin: 0;
+    }
+    .service-detailed-sec-para{
+        text-align: left;
+        padding: 2rem 2rem 0rem;
+    }
     .service-detailed-small-tit{
-        text-align: center;
+        text-align: left;
     }
     .contact-card-inside-cont{
         width: 90%;
@@ -675,14 +693,36 @@
         font-size: 14px;
     }
     .faq-tit{
-        width: 90%;
-        margin: 0rem auto;
+        width: 100%;
+        margin: auto 1rem ;
+        text-align: left;
+        line-height: 2.2rem;
+    }
+    .service-carosoul-tit::before{
+    background-size: contain;
+    bottom: -60%;
+    height: 100%;
+    width: 80%;
     }
     .service-carosoul-sec .swiper{
         width: 300%;
     }
+    .swiper-button-next::after,.swiper-button-prev:after{
+        font-size: 15px ! important;
+    }
+    .service-carosoul-container .swiper-button-prev,
+    .service-carosoul-container  .swiper-button-next{
+        background-color: #ebebeb3d;
+        width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    }
     .service-carosoul-cards{
-        width: 90%;
+        width: 94%;
+    }
+    .service-carosoul-cards > p{
+        line-height: 1.4rem;
+        padding: 1rem 0rem;
     }
     .service-carosoul-sec > p{
         width: 80%;
@@ -690,6 +730,7 @@
     }
     .service-carosoul-tit{
         font-size: 30px;
+        line-height: 2.5rem;
     }
     .service-carosoul-sec{
         overflow: hidden;
@@ -738,6 +779,16 @@
     }
     .footer-sec{
         padding: 3rem 0rem 3rem;
+    }
+    .accordion-button {
+        line-height: normal;
+        /* padding: 1rem; */
+    }
+    .accordion-body{
+        text-align: left;
+    }
+    .accordion-button::before{
+        left: 20;
     }
 
 } 

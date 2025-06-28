@@ -1625,16 +1625,30 @@ section .service-btn-cmc {
 }
 
 .swiper-sec .swiper-button-prev {
+    background-color: #fff;
+     box-shadow: 0px 10px 12px 0px rgba(198, 198, 198, 0.25);
+    color: black;
+    border: .5px solid #cccccc;
+    left: 78%;
+    transition: all .5s ease-in-out;
+}
+
+.swiper-sec .swiper-button-prev:hover{
     background-color: #111111;
     color: white;
-    left: 78%;
 }
+ .swiper-sec .swiper-button-next:hover{
+    background-color: #111111;
+    color: white;
+ }
 
 .swiper-sec .swiper-button-next {
     background-color: #FFFFFF;
     color: black;
+    border: .5px solid #cccccc;
     box-shadow: 0px 10px 12px 0px rgba(198, 198, 198, 0.25);
     left: 83%;
+    transition: all .5s ease-in-out;
 }
 
 .swiper-sec .swiper-button-prev:after,
@@ -2610,7 +2624,7 @@ section .service-btn-cmc {
     position: relative;
     padding: 12rem 0rem;
     place-content: center;
-    background-color: #111111;
+    background-color: #000000;
 }
 
 .case-study-sec .tit-wraper-2{

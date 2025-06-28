@@ -37,6 +37,7 @@ import BlogDesignPage2 from "../pages/BlogDesign-page-2"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'aos/dist/aos.css'; 
 import GridOverView from "../componets/GridOverView/GridOverView"
+import { Portfolio } from "../pages/Portfolio"
 // ..
 AOS.init();
 

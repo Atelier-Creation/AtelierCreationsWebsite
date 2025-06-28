@@ -64,9 +64,9 @@ const WebDevelopment = () => {
      </section>
 
      <section className="service-detailed-sec">
-     <h2 className="">Streamlined Website Development Process for Your Success</h2>
+     <h2 className="service-detailed-sec-tit">Streamlined Website Development Process for Your Success</h2>
 
-     <p>At The Atelier Creation, we take pride in our meticulous and innovative website development process, ensuring that each project aligns perfectly with your business objectives and user needs. Our approach is driven by technical excellence and a commitment to delivering high-performance websites. Here’s a detailed overview of our unique development procedure.</p>
+     <p className="service-detailed-sec-para">At The Atelier Creation, we take pride in our meticulous and innovative website development process, ensuring that each project aligns perfectly with your business objectives and user needs. Our approach is driven by technical excellence and a commitment to delivering high-performance websites. Here’s a detailed overview of our unique development procedure.</p>
         <div className="srv-detai-sec-contain">
             <div className="left-srv-detai-sec">
               
