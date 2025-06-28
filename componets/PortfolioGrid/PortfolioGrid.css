@@ -42,5 +42,7 @@
     margin: 0;
   }
   .portfolio-grid-content-text h1{
-    color: white;
+    color: var(--neutral--white);
+    font-size: 3vw;
+    font-weight: 400;
   }
