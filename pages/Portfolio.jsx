@@ -1,10 +1,10 @@
-import HowWeWork from "../componets/how-we-work"
-import PortfolioSection from "../componets/PortfolioSection"
+import PortfolioSection from "../componets/PortfolioSection/PortfolioSection"
+import TextSection from "../componets/PortfolioSection/TextSection"
 
 export const Portfolio = () => {
   return (
    <>
-   <HowWeWork/>
+   <TextSection/>
    <PortfolioSection/>
    </>
   )
