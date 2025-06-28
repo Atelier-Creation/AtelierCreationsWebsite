@@ -36,6 +36,7 @@ import AOS from 'aos';
 import BlogDesignPage2 from "../pages/BlogDesign-page-2"
 
 import 'aos/dist/aos.css'; 
+import { Portfolio } from "../pages/Portfolio"
 // ..
 AOS.init();
 
@@ -67,6 +68,7 @@ function App(){
         <Route path="/the-role-ai-modern-design" element={<BlogDesignPage2 />} />
         <Route path="/branding" element={<Branding />} />
         <Route path="/ServiceOne" element={<ServiceOne />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
       </BrowserRouter>
 
