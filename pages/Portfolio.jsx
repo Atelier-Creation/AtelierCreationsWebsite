@@ -1,7 +1,11 @@
+import HowWeWork from "../componets/how-we-work"
+import PortfolioSection from "../componets/PortfolioSection"
+
 export const Portfolio = () => {
   return (
-    <div>
-      
-    </div>
+   <>
+   <HowWeWork/>
+   <PortfolioSection/>
+   </>
   )
 }
