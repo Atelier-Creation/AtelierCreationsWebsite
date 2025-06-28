@@ -34,8 +34,9 @@ import Branding from "../pages/Branding"
 import { BrowserRouter , Route , Routes } from "react-router-dom"
 import AOS from 'aos';
 import BlogDesignPage2 from "../pages/BlogDesign-page-2"
-
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'aos/dist/aos.css'; 
+import GridOverView from "../componets/GridOverView/GridOverView"
 // ..
 AOS.init();
 
@@ -67,6 +68,7 @@ function App(){
         <Route path="/the-role-ai-modern-design" element={<BlogDesignPage2 />} />
         <Route path="/branding" element={<Branding />} />
         <Route path="/ServiceOne" element={<ServiceOne />} />
+        <Route path="/:name" element={<GridOverView/>} />
       </Routes>
       </BrowserRouter>
 
