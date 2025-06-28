@@ -42,6 +42,7 @@ const Home = () => {
       <Contacts />
       <SocialMediaSec />
       {/* <FreelancerHub /> */}
+      <PortfolioGrid/>
       <Footer />
     </>
   )
