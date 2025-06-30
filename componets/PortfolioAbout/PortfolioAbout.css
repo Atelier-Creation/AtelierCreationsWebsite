@@ -15,7 +15,15 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 20%;
+    height: 200vh;
 }
+.animated-image {
+    object-fit: cover;
+    width: 300px;
+    height: 200px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+  }
 .portfolio-about-section-content{
     display: flex;
     flex-direction: column;

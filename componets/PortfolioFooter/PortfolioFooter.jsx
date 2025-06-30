@@ -52,7 +52,7 @@ function PortfolioFooter() {
     <div className='copy-right-text'>
         <p>Copyright © 2025 Equispace. All rights reserved.</p>
         <p style={{color:"white"}}>Back to top</p>
-        <p>created by Shashank Mehta & Lorem Ipsum</p>
+        <p>created by <strong style={{color:"white"}}>Atelier Creation</strong></p>
     </div>
     </div>
   )

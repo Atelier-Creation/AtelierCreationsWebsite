@@ -52,51 +52,131 @@ const backgroundStrips = [
 const portfolioItems = [
   {
     id: 1,
-    title: "IBM RPWD",
-    category: "Tactile INSTALLATION • Braille Signages",
+    title: "Trigun Studio",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/67f622de004cb2787adbbcf6_WhatsApp%20Image%202025-03-23%20at%2011.41.21_c6c30e01.jpg",
-    link: "ibm-rpwd/ibm.html",
+      "https://www.trigunstudio.com/assets/images/banner/best-architects-interior.webp",
+    link: "https://www.trigunstudio.com/",
   },
   {
     id: 2,
-    title: "IKEA",
-    category: "GENERAL SUPPLIES • interior works",
+    title: "Tuneaethetics",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/6850ef9833b943a196960949_TLS-2048x1327.webp",
-    link: "ibm-rpwd/ikea.html",
+      "https://tuneaesthetics.com/wp-content/uploads/2024/12/best-aesthetics-solutions.jpg",
+    link: "https://tuneaesthetics.com/",
   },
   {
     id: 3,
-    title: "Amazon WTC",
-    category: "Fire Rated Door Installation • IT supplies",
+    title: "Designroots3d",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/682f3cdcd521f398e9e2c0b2_A-1.webp",
-    link: "ibm-rpwd/amazon-wtc.html",
+      "https://www.designroots3d.com/asstes/image/home/design-roots-3d-products-machines.webp",
+    link: "https://www.designroots3d.com/",
   },
   {
     id: 4,
-    title: "HP",
-    category: "Wall painting • False ceiling Works",
+    title: "Beingsocial",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/682f2f07cb88102922fa153d_WhatsApp%20Image%202025-05-18%20at%2014.17.09_bc69bd6d.jpg",
-    link: "ibm-rpwd/hp.html",
+      "https://www.beingsocialmedia.com/assets/images/bg/home-shape.png",
+    link: "https://www.beingsocialmedia.com/",
   },
   {
     id: 5,
-    title: "DELL",
-    category: "Restroom Wall tiles replacement",
+    title: "Industro Venture",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/682f47a41bdfa7cbd25c5e36_WhatsApp%20Image%202025-05-22%20at%2021.10.09_d25444d6.jpg",
-    link: "ibm-rpwd/dell.html",
+      "https://www.industroventure.com/assets/world-map-D4JACZBV.svg",
+    link: "https://www.industroventure.com/",
   },
   {
     id: 6,
-    title: "Oracle",
-    category: "MS Mesh Cage partition works • Motor Services",
+    title: "Mayon Foundations",
+    category: "Website and SEO Projects",
     imageSrc:
-      "https://cdn.prod.website-files.com/67f622de004cb2787adbbc2e/682f58da76d66c02c797bb47_e1f247154505291.6343df3cad593.jpg",
-    link: "ibm-rpwd/oracle.html",
+      "https://www.mayonfoundations.com/images/slidenew01.webp",
+    link: "https://www.mayonfoundations.com/",
+  },
+  {
+    id: 7,
+    title: "Keva Clinic",
+    category: "Website and SEO Projects",
+    imageSrc:
+      "https://www.kevaclinic.com/assets/our-image/banner/best-skin-care-hospital-keva-coimbatore.webp",
+    link: "https://www.kevaclinic.com/",
+  },
+  {
+    id: 8,
+    title: "Golden Gateway",
+    category: "Website and SEO Projects",
+    imageSrc:
+      "https://www.goldengatewayedu.com/assets/img/home/testimonial-bg-2.webp",
+    link: "https://www.goldengatewayedu.com/",
+  },
+  {
+    id: 9,
+    title: "Sushruta",
+    category: "Website and SEO Projects",
+    imageSrc:
+      "https://www.sushruta.in/assets/img/slider/plastic-surgery-center-coimbatore_1.webp",
+    link: "https://www.sushruta.in/",
+  },
+  {
+    id: 10,
+    title: "Bluestone",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://kinclimg5.bluestone.com/f_webp/static/hp/d/bgu_v1.jpg",
+    link: "https://www.bluestone.com/",
+  },
+  {
+    id: 11,
+    title: "Nirvana",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://nirvanagemsandjewels.com/wp-content/uploads/2025/01/Aurum-bella-3-scaled.jpg",
+    link: "https://nirvanagemsandjewels.com",
+  },
+  {
+    id: 12,
+    title: "Candere",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://www.candere.com/media/home_page_images/slider/Banner_100625.jpg",
+    link: "https://www.candere.com",
+  },
+  {
+    id: 13,
+    title: "Goat-Robotics",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://www.goat-robotics.com/assets/reff/empowring-industries-autonomous-mobility.webp",
+    link: "https://www.goat-robotics.com",
+  },
+  {
+    id: 14,
+    title: "Nobuyrent",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://nobuyrent.com/hire/advertisement/254/1091140424.webp",
+    link: "https://nobuyrent.com",
+  },
+  {
+    id: 15,
+    title: "Gehna",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://www.gehnaindia.com/_next/image?url=https%3A%2F%2Fcdn-assets.gehnaindia.com%2F2hxcrkr388v2ppwgf0uiqpk5n1fg&w=1920&q=75",
+    link: "https://www.gehnaindia.com",
+  },
+  {
+    id: 16,
+    title: "Mohan Jewellery",
+    category: "E-commerce Websites",
+    imageSrc:
+      "https://mohanjewellery.com/wp-content/uploads/2022/01/home-4-min.jpg",
+    link: "https://mohanjewellery.com/",
   },
 ];
 
