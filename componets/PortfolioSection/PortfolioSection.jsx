@@ -216,7 +216,7 @@ const PortfolioSection = () => {
         pin: true,
         anticipatePin: 0,
         onEnterBack: () => {
-          gsap.to(rotationValue, { y: 0, duration: 1.4 });
+          gsap.to(rotationValue, { y: 0, duration: 1 });
           gsap.to(
             { tilt: 1 },
             { tilt: 1, duration: 1, onUpdate: () => (tiltIntensity = 1) }
@@ -379,15 +379,15 @@ const PortfolioSection = () => {
             <h1 className="featured-work">Featured Work</h1>
             <section className="space2"></section>
             <div className="work_text">
-              <div className="w">
+              <div className="w" >
                 <p className="paragraph_4">Step inside our spaces where</p>
               </div>
-              <div className="w">
+              <div className="w" >
                 <p className="paragraph_4">
                   accessibility meets innovation—because
                 </p>
               </div>
-              <div className="w">
+              <div className="w" >
                 <p className="paragraph_4">great design belongs to everyone</p>
               </div>
             </div>
@@ -420,7 +420,7 @@ const PortfolioSection = () => {
                         <img
                           className="img-2"
                           alt="arrow"
-                          src="data:image/png;base64,iVBOR..."
+                          src="./arrow.png"
                         />
                         <h1 className="heading-2">{item.title}</h1>
                       </div>
