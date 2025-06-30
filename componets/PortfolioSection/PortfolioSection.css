@@ -3,6 +3,27 @@ html {
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
 }
+.img-hold {
+  aspect-ratio: 3 / 2;
+  border-radius: 1.2vw;
+  flex: 0 auto;
+  height: auto;
+  display: block;
+  overflow: hidden;
+  width: 550px;
+}
+.work {
+  grid-column-gap: 6rem;
+  grid-row-gap: 4rem !important;
+  flex-flow: column;
+  height: auto;
+  padding-top: 4vw;
+  padding-bottom: 15vw;
+  display: flex
+;
+  position: relative;
+  overflow: hidden;
+}
 
 body {
   margin: 0;
@@ -218,6 +239,7 @@ td, th {
 html {
   height: 100%;
 }
+
 
 body {
   color: #333;

@@ -1,0 +1,84 @@
+.our-design-container-head-text{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+.our-design-container-head-text h1{
+    color: var(--neutral--alt-white);
+    text-align: left;
+    text-transform: none;
+    mix-blend-mode: difference;
+    justify-content: center;
+    align-items: flex-end;
+    width: 30%;
+    height: 100%;
+    margin: 0;
+    margin-left: 4%;
+    font-family: Gilroy, Arial, sans-serif;
+    font-size: 3vw;
+    font-weight: 500;
+    line-height: 110%;
+    text-decoration: none;
+    display: flex;
+    position: static;
+}
+.our-design-container-head-text p{
+    color: var(--neutral--black);
+    width: 39%;
+    font-size: 1.1vw;
+    margin-right: 4%;
+}
+.our-design-container-image{
+    width: 67%;
+    height: 370px;
+    position: relative;
+}
+.our-design-container-image-inside-text{
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.our-design-container-image-inside-text h3{
+    font-size: 20px;
+}
+.our-design-container-image-inside-text p{
+    font-size: 13px;
+}
+.our-design-container img{
+    width: 100%;
+    height:100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.black-box{
+    width: 31.5%;
+    height: 370px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: black;
+    position: relative;
+}
+.our-design-container-image-black-box{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 5%;
+}
+.black-box h1{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: var(--equispace-brand-color--artyclick-amber);
+    text-align: left;
+    font-size: 3vw;
+    font-weight: 900;
+    line-height: 110%;
+    overflow: visible;
+    width: 200px;
+}

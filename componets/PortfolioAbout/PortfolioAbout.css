@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .scroll-spacer {
+    height: 200vh; /* Makes the page scrollable */
+  }
+  
+.portfolio-about-section-container{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+.portfolio-about-section-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.about-head{
+    color: var(--neutral--neutral);
+    font-size: 1vw;
+    font-weight: 500;
+}
+.portfolio-about-section-container h1{
+    color: var(--neutral--alt-white);
+    text-align: center;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-weight: 900;
+    line-height: 100%;
+    text-decoration: none;
+    display: flex;
+    position: static;
+    letter-spacing: 3px;
+    width: 900px;
+}
+.about-para{
+    color: var(--neutral--neutral-light);
+    text-align: cener;
+    mix-blend-mode: difference;
+    width: 925px;
+    font-size: 1.1vw;
+    font-weight: 400;
+    display: block;
+    position: relative;
+    overflow: visible;
+}
+.portfolio-about-section-container img{
+    z-index: 10;
+    box-sizing: content-box;
+    mix-blend-mode: normal;
+    border-width: 1px;
+    border-color: #000;
+    border-radius: .25rem;
+    flex: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+  
+  
