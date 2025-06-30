@@ -483,7 +483,7 @@ const PortfolioSection = () => {
               {portfolioItems.slice(rowIndex, rowIndex + 2).map((item) => (
                 <a
                   key={item.id}
-                  href={item.title}
+                  href={item.link}
                   className="projects w-inline-block"
                 >
                   <div className="img-hold">
