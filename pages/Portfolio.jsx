@@ -1,6 +1,6 @@
 import OurClient from "../componets/OurClient/OurClient"
 import OurDesign from "../componets/OurDesign/OurDesign"
-import PortfolioAbout from "../componets/PortfolioAbout/PortfolioAbout"
+import AboutEquispace from "../componets/PortfolioAbout/AboutEquispace"
 import PortfolioFaq from "../componets/PortfolioFaq/PortfolioFaq"
 import PortfolioFooter from "../componets/PortfolioFooter/PortfolioFooter"
 import PortfolioSection from "../componets/PortfolioSection/PortfolioSection"
@@ -11,7 +11,7 @@ export const Portfolio = () => {
    <>
    <TextSection/>
    <PortfolioSection/>
-   <PortfolioAbout/>
+   <AboutEquispace/>
    <OurDesign/>
    <OurClient/>
    <PortfolioFaq/>

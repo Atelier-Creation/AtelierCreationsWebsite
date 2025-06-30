@@ -4891,6 +4891,7 @@ figcaption {
 }
 
 .featured-work {
+  mix-blend-mode: difference;
   z-index: 2;
   color: var(--neutral--alt-white);
   text-align: left;
@@ -7493,6 +7494,7 @@ figcaption {
   text-transform: uppercase;
   font-family: Gilroy, Arial, sans-serif;
   font-size: 1vw;
+  text-align: center;
   font-weight: 500;
 }
 
@@ -12517,4 +12519,8 @@ figcaption {
     display: flex;
     position: relative;
     top: 0px;
+}
+.about_image_div img,
+.logo-hold {
+  will-change: transform;
 }
