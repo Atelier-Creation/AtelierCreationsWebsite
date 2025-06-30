@@ -23,7 +23,7 @@
     border: 1px solid #e3e6f8;
     background-color: #e3e6f8;
     padding: 2vw;
-    width: 230px;
+    width: 200px;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -32,3 +32,25 @@
 .client-data-grid img{
     height: 40px;
 }
+@media (max-width: 1024px) {
+    .our-client-grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .our-client-grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .client-data-grid{
+        width: 150px;
+        height: 80px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .our-client-grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
