@@ -10,7 +10,7 @@ function PortfolioFooter() {
         <p className='portfolio-para'>Tell us about your business. Let's get this conversation started. Fill in the form or send us an email.</p>
         <div className="footer-arrow-icon-text">
             <i className="bi bi-arrow-right"></i>
-            <p className="connect-link-footer">connectus@.in</p>
+            <a className="connect-link-footer">connectus@.in</a>
         </div>
             <div className='footer-left-connect-container'>
                 <div className='address-head'>
