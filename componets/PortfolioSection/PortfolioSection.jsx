@@ -579,7 +579,7 @@ useEffect(() => {
 
       </div>
       {/* Featured Work */}
-      <div className="work-holder" ref={revealSectionRef} style={{marginTop:'40rem'}}>
+      <div className="work-holder" ref={revealSectionRef}>
         <section className="s2">
           <div className="text-head">
             <h1 className="featured-work">Featured Work</h1>

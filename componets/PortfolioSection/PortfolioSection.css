@@ -5852,6 +5852,7 @@ figcaption {
 .work-holder {
   flex-flow: column;
   display: flex;
+  margin-top: 40 ;
 }
 
 .card_section {
@@ -12633,6 +12634,7 @@ figcaption {
     transform: translateX(-10px);
   }
   .work-holder{
+    margin-top: 50rem;
     transform: scale(1, 1) !important;
   }
 }
