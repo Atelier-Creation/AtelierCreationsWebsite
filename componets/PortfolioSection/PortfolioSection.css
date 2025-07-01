@@ -4519,6 +4519,10 @@ figcaption {
   overflow: hidden;
   transform: rotate(0);
   box-shadow: 0 0 3rem 1rem #0000001f;
+  will-change: transform;
+  /* backface-visibility: hidden; */
+  transform-style: preserve-3d;
+  transform: translateZ(0);
 }
 
 .grommet-iconsprojects {
