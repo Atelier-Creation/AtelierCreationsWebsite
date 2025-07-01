@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 import "./PortfolioSection.css";
 import image1 from '../../src/assets/portfolioGridImage/New folder/i1.png'
 import image2 from '../../src/assets/portfolioGridImage/New folder/i2.png'
@@ -299,6 +300,7 @@ const PortfolioSection = () => {
   const cardFrontRef = useRef(null);
   const cardBackRef = useRef(null);
   const revealSectionRef = useRef(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const card = cardRef.current;
@@ -512,9 +514,10 @@ const PortfolioSection = () => {
     <div className={`portfolio-row row${rowIndex + 1} w-layout-grid`} key={rowIndex}>
 
       {portfolioItems.slice(rowIndex * 2, rowIndex * 2 + 2).map((item) => (
-        <a
+        <div
           key={item.id}
-          href={item.title}
+          onClick={() => navigate(`/${item.title}`, { state: { data: item } })}
+          style={{ cursor: "pointer" }}
           className="projects w-inline-block"
         >
           <div className="img-hold">
@@ -537,7 +540,7 @@ const PortfolioSection = () => {
               </div>
             </div>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   ))}

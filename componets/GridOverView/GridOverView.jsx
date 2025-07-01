@@ -7,11 +7,16 @@ import image4 from '../../src/assets/portfolioGridImage/image3.jpg'
 import { gridData } from "../PortfolioGrid/PortfolioGrid";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 const images = [image1,image2,image3,image4]
 function GridOverView() {
+  const location = useLocation();
+  const data = location.state?.data;
+  const images = data?.imageSrc || [];
     const { projectName } = useParams();
     const navigate = useNavigate();
     const scrollContainer = useRef(null);
+    
     useEffect(() => {
         const container = scrollContainer.current;
     
@@ -32,7 +37,7 @@ function GridOverView() {
   return (
     <div className='grid-overview-container'ref={scrollContainer}>
       <div className='data-details-section'>
-        <h1>IBM RPWD</h1>
+        <h1>{data.title}</h1>
         <div className='data-details-para'>
             <p>Equispace collaborated with IBM to create a truly inclusive and accessible environment, ensuring compliance with the Rights of Persons with Disabilities (RPWD) Act. Our expertise in accessibility solutions helped transform IBM’s spaces into barrier-free, adaptive, and safe environments for all individuals.</p>
             <p>Through our partnership, IBM has taken a significant step towards creating workplaces that are truly inclusive, ensuring equal access for everyone.</p>
@@ -50,16 +55,26 @@ function GridOverView() {
         </div>
       </div>
       <div className='data-overview-images'>
-        {images.map((image,index)=>(
-            <img src={image} key={index}/>
-        ))}
+      <div className='data-overview-images'>
+  {images.map((img, index) => (
+    <img src={img} key={index} alt={`image-${index}`} />
+  ))}
+</div>
+
+
       </div>
       <div className="grid-overview-connect">
         <h3>Let&apos;s Connect</h3>
         <p>Tell us about your business. Let&apos;s get this conversation started. Fill in the form or send us an email.</p>
         <div className="grid-overview-connect-link">
             <i className="bi bi-arrow-right"></i>
-            <a href="/contact-us">contactus@.in</a>
+            <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=atelierhub.official@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  atelierhub.official@gmail.com
+</a>
         </div>
         <hr className="grid-overview-hr-line"/>
         <h1>{nextProject.head}</h1>

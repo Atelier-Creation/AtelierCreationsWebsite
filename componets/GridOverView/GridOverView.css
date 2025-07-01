@@ -109,7 +109,7 @@ body, html {
   .grid-overview-connect-link{
     color: var(--neutral--white);
     display: flex;
-    align-items:baseline;
+    align-items:center;
     font-size: 1.8vw;
     gap: 16px;
     margin: 20px 0;
@@ -126,7 +126,8 @@ body, html {
   }
   .grid-overview-connect-link a{
     color: white;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
+    margin-bottom: 7px;
   }
   .grid-overview-container::-webkit-scrollbar {
   display: none;
