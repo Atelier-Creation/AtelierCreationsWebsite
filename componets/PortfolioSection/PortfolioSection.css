@@ -12645,6 +12645,13 @@ figcaption {
     flex-direction: column;
     gap: 1.5rem;
   }
+  .about_image_div {
+    transform: none !important;
+  }
+
+  .logo-hold {
+    transform: none !important;
+  }
 
   .about-but-head {
     width: 100%;
