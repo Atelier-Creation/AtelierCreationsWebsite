@@ -43,6 +43,7 @@ function OurDesign() {
                 className={`our-design-container-image ${i === 0 ? 'big' : 'small'}`}
               >
                 <img src={item.image} alt={item.header} />
+                <div className="overlay" />
                 <div className='our-design-container-image-inside-text'>
                   <h3>{item.header}</h3>
                   <p>{item.para}</p>
