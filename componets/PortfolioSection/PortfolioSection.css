@@ -11530,7 +11530,8 @@ figcaption {
   }
 
   .text-block-8 {
-    display: none;
+            font-size: 4vw;
+        text-align: left;
   }
 
   .text-block-9 {
@@ -12629,5 +12630,69 @@ figcaption {
   }
   .work-holder{
     transform: scale(1, 1) !important;
+  }
+}
+
+
+/* ===== AboutEquispace Mobile Responsive ===== */
+@media screen and (max-width: 768px) {
+  .div-block-11 {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .about-but-head {
+    width: 100%;
+    text-align: center;
+  }
+
+  .heading-about-us {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .text-2-copy {
+    font-size: 2rem;
+  }
+
+  .about-us-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .logo-hold {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+
+  .image-12 {
+    width: 100px;
+    height: auto;
+  }
+
+  .about_image_div {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .ibm-click {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .button_new-copy {
+    justify-content: center;
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
   }
 }

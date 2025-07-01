@@ -12,6 +12,8 @@ export default function AboutEquispace() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+     const isMobile = window.innerWidth <= 768;
+  if (isMobile) return;
     const ctx = gsap.context(() => {
       // Pin the section and animate image scale
       ScrollTrigger.create({
