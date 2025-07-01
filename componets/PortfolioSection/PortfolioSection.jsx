@@ -2,6 +2,55 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./PortfolioSection.css";
+import image1 from '../../src/assets/portfolioGridImage/New folder/i1.png'
+import image2 from '../../src/assets/portfolioGridImage/New folder/i2.png'
+import image3 from '../../src/assets/portfolioGridImage/New folder/i3.png'
+import image4 from '../../src/assets/portfolioGridImage/New folder/i4.png'
+import image5 from '../../src/assets/portfolioGridImage/New folder/i5.png'
+import image6 from '../../src/assets/portfolioGridImage/New folder/i6.png'
+import image7 from '../../src/assets/portfolioGridImage/New folder/i7.png'
+import image8 from '../../src/assets/portfolioGridImage/New folder/i8.png'
+import image9 from '../../src/assets/portfolioGridImage/New folder/i9.png'
+import image10 from '../../src/assets/portfolioGridImage/New folder/i10.png'
+import image11 from '../../src/assets/portfolioGridImage/New folder/i11.png'
+import image12 from '../../src/assets/portfolioGridImage/New folder/i12.png'
+import image13 from '../../src/assets/portfolioGridImage/New folder/i13.png'
+import image14 from '../../src/assets/portfolioGridImage/New folder/i14.png'
+import image15 from '../../src/assets/portfolioGridImage/New folder/i15.png'
+import image16 from '../../src/assets/portfolioGridImage/New folder/i16.png'
+import image17 from '../../src/assets/portfolioGridImage/New folder/i17.png'
+import image18 from '../../src/assets/portfolioGridImage/New folder/i18.png'
+import image19 from '../../src/assets/portfolioGridImage/New folder/i19.png'
+import image20 from '../../src/assets/portfolioGridImage/New folder/i20.png'
+import image21 from '../../src/assets/portfolioGridImage/New folder/i21.png'
+import image22 from '../../src/assets/portfolioGridImage/New folder/i22.png'
+import image23 from '../../src/assets/portfolioGridImage/New folder/i23.png'
+import image24 from '../../src/assets/portfolioGridImage/New folder/i24.png'
+import image25 from '../../src/assets/portfolioGridImage/New folder/i25.png'
+import image26 from '../../src/assets/portfolioGridImage/New folder/i26.png'
+import image27 from '../../src/assets/portfolioGridImage/New folder/i27.png'
+import image28 from '../../src/assets/portfolioGridImage/New folder/i28.png'
+import image29 from '../../src/assets/portfolioGridImage/New folder/i29.png'
+import image30 from '../../src/assets/portfolioGridImage/New folder/i30.png'
+import image31 from '../../src/assets/portfolioGridImage/New folder/i31.png'
+import image32 from '../../src/assets/portfolioGridImage/New folder/i32.png'
+import image33 from '../../src/assets/portfolioGridImage/New folder/i33.png'
+import image34 from '../../src/assets/portfolioGridImage/New folder/i34.png'
+import image35 from '../../src/assets/portfolioGridImage/New folder/i35.png'
+import image36 from '../../src/assets/portfolioGridImage/New folder/i36.png'
+import image37 from '../../src/assets/portfolioGridImage/New folder/i37.png'
+import image38 from '../../src/assets/portfolioGridImage/New folder/i38.png'
+import image39 from '../../src/assets/portfolioGridImage/New folder/i39.png'
+import image40 from '../../src/assets/portfolioGridImage/New folder/i40.png'
+import image41 from '../../src/assets/portfolioGridImage/New folder/i41.png'
+import image42 from '../../src/assets/portfolioGridImage/New folder/i42.png'
+import image43 from '../../src/assets/portfolioGridImage/New folder/i43.png'
+import image44 from '../../src/assets/portfolioGridImage/New folder/i44.png'
+import image45 from '../../src/assets/portfolioGridImage/New folder/i45.png'
+import image46 from '../../src/assets/portfolioGridImage/New folder/i46.png'
+import image47 from '../../src/assets/portfolioGridImage/New folder/i47.png'
+import image48 from '../../src/assets/portfolioGridImage/New folder/i48.png'
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,128 +103,112 @@ const portfolioItems = [
     id: 1,
     title: "Trigun Studio",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.trigunstudio.com/assets/images/banner/best-architects-interior.webp",
+    imageSrc:[image1,image2,image3],
     link: "https://www.trigunstudio.com/",
   },
   {
     id: 2,
     title: "Tuneaethetics",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://tuneaesthetics.com/wp-content/uploads/2024/12/best-aesthetics-solutions.jpg",
+    imageSrc:[image4,image5,image6],
     link: "https://tuneaesthetics.com/",
   },
   {
     id: 3,
     title: "Designroots3d",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.designroots3d.com/asstes/image/home/design-roots-3d-products-machines.webp",
+    imageSrc:[image7,image8,image9],
     link: "https://www.designroots3d.com/",
   },
   {
     id: 4,
     title: "Beingsocial",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.beingsocialmedia.com/assets/images/bg/home-shape.png",
+    imageSrc:[image10,image11,image12],
     link: "https://www.beingsocialmedia.com/",
   },
   {
     id: 5,
     title: "Industro Venture",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.industroventure.com/assets/world-map-D4JACZBV.svg",
+    imageSrc:[image13,image14,image15],
     link: "https://www.industroventure.com/",
   },
   {
     id: 6,
     title: "Mayon Foundations",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.mayonfoundations.com/images/slidenew01.webp",
+    imageSrc:[image16,image17,image18],
     link: "https://www.mayonfoundations.com/",
   },
   {
     id: 7,
     title: "Keva Clinic",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.kevaclinic.com/assets/our-image/banner/best-skin-care-hospital-keva-coimbatore.webp",
+    imageSrc:[image19,image20,image21],
     link: "https://www.kevaclinic.com/",
   },
   {
     id: 8,
     title: "Golden Gateway",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.goldengatewayedu.com/assets/img/home/testimonial-bg-2.webp",
+    imageSrc:[image22,image23,image24],
     link: "https://www.goldengatewayedu.com/",
   },
   {
     id: 9,
     title: "Sushruta",
     category: "Website and SEO Projects",
-    imageSrc:
-      "https://www.sushruta.in/assets/img/slider/plastic-surgery-center-coimbatore_1.webp",
+    imageSrc:[image25,image26,image27],
     link: "https://www.sushruta.in/",
   },
   {
     id: 10,
     title: "Bluestone",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://kinclimg5.bluestone.com/f_webp/static/hp/d/bgu_v1.jpg",
+    imageSrc:[image28,image29,image30],
     link: "https://www.bluestone.com/",
   },
   {
     id: 11,
     title: "Nirvana",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://nirvanagemsandjewels.com/wp-content/uploads/2025/01/Aurum-bella-3-scaled.jpg",
+    imageSrc:[image31,image32,image33],
     link: "https://nirvanagemsandjewels.com",
   },
   {
     id: 12,
     title: "Candere",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://www.candere.com/media/home_page_images/slider/Banner_100625.jpg",
+    imageSrc:[image34,image35,image36],
     link: "https://www.candere.com",
   },
   {
     id: 13,
     title: "Goat-Robotics",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://www.goat-robotics.com/assets/reff/empowring-industries-autonomous-mobility.webp",
+    imageSrc:[image37,image38,image39],
     link: "https://www.goat-robotics.com",
   },
   {
     id: 14,
     title: "Nobuyrent",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://nobuyrent.com/hire/advertisement/254/1091140424.webp",
+    imageSrc:[image40,image41,image42],
     link: "https://nobuyrent.com",
   },
   {
     id: 15,
     title: "Gehna",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://www.gehnaindia.com/_next/image?url=https%3A%2F%2Fcdn-assets.gehnaindia.com%2F2hxcrkr388v2ppwgf0uiqpk5n1fg&w=1920&q=75",
+    imageSrc:[image43,image44,image45],
     link: "https://www.gehnaindia.com",
   },
   {
     id: 16,
     title: "Mohan Jewellery",
     category: "E-commerce Websites",
-    imageSrc:
-      "https://mohanjewellery.com/wp-content/uploads/2022/01/home-4-min.jpg",
+    imageSrc:[image46,image47,image48],
     link: "https://mohanjewellery.com/",
   },
 ];
@@ -486,7 +519,7 @@ const PortfolioSection = () => {
         >
           <div className="img-hold">
             <img
-              src={item.imageSrc}
+              src={item.imageSrc?.[0]}
               alt={item.title}
               className={`image-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
             />
