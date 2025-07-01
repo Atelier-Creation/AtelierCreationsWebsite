@@ -10,14 +10,31 @@ function PortfolioFooter() {
         <p className='portfolio-para'>Tell us about your business. Let's get this conversation started. Fill in the form or send us an email.</p>
         <div className="footer-arrow-icon-text">
             <i className="bi bi-arrow-right"></i>
-            <a className="connect-link-footer">connectus@.in</a>
+            <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=atelierhub.official@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="connect-link-footer"
+>
+  atelierhub.official@gmail.com
+</a>
+
         </div>
             <div className='footer-left-connect-container'>
                 <div className='address-head'>
                     <p>(connect)</p>
-                    <h4>Twitter</h4>
-                    <h4>Instagram</h4>
-                    <h4>Linkedin</h4>
+                    <a className="social-link" href="https://www.facebook.com/share/15MJ3q1Z4y/" target="_blank" rel="noopener noreferrer">
+  <h4>Facebook</h4>
+</a>
+
+<a className="social-link" href="https://www.instagram.com/atelier__creations?igsh=MWIyMzBlMmZ4MmFxeg==" target="_blank" rel="noopener noreferrer">
+  <h4>Instagram</h4>
+</a>
+
+<a className="social-link" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+  <h4>Linkedin</h4>
+</a>
+
                 </div>
                 <div className='address-head'>
                     <p>(Visit Us)</p>
@@ -51,7 +68,14 @@ function PortfolioFooter() {
     <hr className='footer-hr-line'/>
     <div className='copy-right-text'>
         <p>Copyright © 2025 Equispace. All rights reserved.</p>
-        <p style={{color:"white"}}>Back to top</p>
+        <a
+  href="#top"
+  style={{ color: "white", cursor: "pointer", textDecoration: 'none' }}
+>
+  Back to top
+</a>
+
+
         <p>created by <strong style={{color:"white"}}>Atelier Creation</strong></p>
     </div>
     </div>

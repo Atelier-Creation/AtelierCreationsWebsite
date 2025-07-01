@@ -9,6 +9,7 @@ import TextSection from "../componets/PortfolioSection/TextSection"
 export const Portfolio = () => {
   return (
    <>
+   <div id="top"></div>
    <TextSection/>
    <PortfolioSection/>
    <AboutEquispace/>

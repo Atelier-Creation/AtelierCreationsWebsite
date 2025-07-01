@@ -212,4 +212,10 @@
       font-size: 24px;
     }
   }
-  
+  .social-link{
+    text-decoration: none;
+  }
+  .social-link:hover{
+    text-decoration: underline;
+    color: white;
+  }
