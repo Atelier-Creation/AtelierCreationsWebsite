@@ -325,8 +325,9 @@ useEffect(() => {
   const cardFront = cardFrontRef.current;
   const cardBack = cardBackRef.current;
   const revealSection = revealSectionRef.current;
-
   if (!card || !cardFront || !cardBack || !revealSection) return;
+
+  const isMobile = window.innerWidth <= 768;
 
   gsap.set(revealSection, {
     opacity: 1,
@@ -342,14 +343,13 @@ useEffect(() => {
   let scrollEndTimeout;
   let tiltIntensity = 1;
 
-  // GSAP timeline with ScrollTrigger
   const flipTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".card-wrapper",
       start: "top 30%",
       end: "bottom+=550%",
       scrub: 1,
-      pin: true,
+      pin: !isMobile, // Disable pin on mobile
       anticipatePin: 0,
       onEnterBack: () => {
         gsap.to(rotationValue, { y: 0, duration: 1 });
@@ -364,32 +364,40 @@ useEffect(() => {
     },
   });
 
-  // Flip and scale animations
   flipTimeline
     .to(rotationValue, {
       y: 180,
       ease: "power3.inOut",
       duration: 1.45,
-      onUpdate: () => {
-        gsap.set(card, { rotationY: rotationValue.y });
-        if (rotationValue.y > 90) {
-          cardFront.style.visibility = "hidden";
-          cardBack.style.visibility = "visible";
-          gsap.to(revealSection, {
-            clipPath: "circle(100% at center)",
-            duration: 2,
-            ease: "power3.out",
-          });
-        } else {
-          cardFront.style.visibility = "visible";
-          cardBack.style.visibility = "hidden";
-        }
-      },
     })
     .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
     .to(revealSection, { opacity: 1, ease: "power2.out", duration: 1.5 }, "-=0.5");
 
-  // Mouse and touch based tilt effect
+  // Keep card synced manually per frame
+  let frameId;
+  const syncRotation = () => {
+    // Apply rotation
+    gsap.set(card, { rotationY: rotationValue.y });
+
+    // Handle front/back face
+    if (rotationValue.y > 90) {
+      cardFront.style.visibility = "hidden";
+      cardBack.style.visibility = "visible";
+      gsap.to(revealSection, {
+        clipPath: "circle(100% at center)",
+        duration: 1.5,
+        ease: "power3.out",
+      });
+    } else {
+      cardFront.style.visibility = "visible";
+      cardBack.style.visibility = "hidden";
+    }
+
+    frameId = requestAnimationFrame(syncRotation);
+  };
+  syncRotation();
+
+  // Tilt support
   const applyTilt = (clientX, clientY) => {
     const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
     const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
@@ -422,32 +430,27 @@ useEffect(() => {
     }
   };
 
-  // Manual animation frame loop to sync scroll updates
-  let frameId;
-  const animateFrame = () => {
-    gsap.set(card, { rotationY: rotationValue.y });
-    frameId = requestAnimationFrame(animateFrame);
-  };
-  animateFrame();
+  const handleScroll = () => ScrollTrigger.refresh();
+  const handleResize = () => ScrollTrigger.refresh();
 
+  // Events
   document.addEventListener("mousemove", handleMouseMove);
   document.addEventListener("mouseleave", handleMouseLeave);
   document.addEventListener("touchmove", handleTouchMove);
-  window.addEventListener("scroll", ScrollTrigger.refresh);
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleResize);
 
   return () => {
     cancelAnimationFrame(frameId);
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseleave", handleMouseLeave);
     document.removeEventListener("touchmove", handleTouchMove);
-    window.removeEventListener("scroll", ScrollTrigger.refresh);
+    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("resize", handleResize);
     flipTimeline.kill();
     ScrollTrigger.getAll().forEach((t) => t.kill());
   };
 }, []);
-
-
-
 
   return (
     <section id="portfolio" className="portfolio">
