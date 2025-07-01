@@ -12637,6 +12637,9 @@ figcaption {
 /* ===== AboutEquispace Mobile Responsive ===== */
 @media screen and (max-width: 768px) {
   .div-block-11 {
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
@@ -12686,6 +12689,9 @@ figcaption {
     height: auto;
     object-fit: cover;
     border-radius: 16px;
+  }
+  .pin-spacer{
+    inset: 160px 0px 0px !important;
   }
 
   .button_new-copy {

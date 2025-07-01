@@ -464,8 +464,8 @@ useEffect(() => {
                 className="grommet-iconsprojects"
               />
               <div className="frame-24">
-                <div className="text-4">PROJECTS</div>
-                <div className="text-5">⠏⠗⠕⠚⠑⠉⠞⠎</div>
+                <div className="text-4">PORTFOLIO</div>
+                <div className="text-5">⠏⠕⠗⠞⠋⠕⠇⠊⠕</div>
               </div>
             </div>
             <div className="card-back" ref={cardBackRef}></div>
