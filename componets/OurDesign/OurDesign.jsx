@@ -54,7 +54,7 @@ function OurDesign() {
             {row.length === 1 && (
                         <div className='black-box'>
           <h1>AND MANY MORE ...</h1>
-          <img src={logo} alt="logo" />
+          <img src='/logo1.svg' alt="logo" style={{filter:'contrast(0.5)'}} />
         </div>
               
             )}

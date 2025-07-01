@@ -192,14 +192,13 @@
     .our-design-container-image,
     .black-box {
       width: 98%;
-      height: 200px;
+      height: 350px;
     }
   
     .black-box h1 {
         font-size: 13vw !important;
         width: 250px;
-        top: 0;
-        left: 0;
+        padding: 2rem;
     }
   
     .black-box img {
@@ -238,4 +237,13 @@
       width: 120px;
     }
   }
-  
+  @media (max-width: 768px) {
+  .our-design-row, .our-design-items-wrapper {
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+  .our-design-container-image.big,.our-design-container-image.small{
+    width: 100%;
+    height: auto;
+  }
+}
