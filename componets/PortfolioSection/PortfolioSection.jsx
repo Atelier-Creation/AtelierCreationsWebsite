@@ -474,43 +474,44 @@ const PortfolioSection = () => {
           </div>
         </section>
 
-        <section className="work">
-          {[0, 2, 4].map((rowIndex) => (
-            <div
-              className={`w-layout-grid row${rowIndex / 2 + 1}`}
-              key={rowIndex}
-            >
-              {portfolioItems.slice(rowIndex, rowIndex + 2).map((item) => (
-                <a
-                  key={item.id}
-                  href={item.link}
-                  className="projects w-inline-block"
-                >
-                  <div className="img-hold">
-                    <img
-                      src={item.imageSrc}
-                      alt={item.title}
-                      className={`image-${item.title.toLowerCase()}`}
-                    />
-                  </div>
-                  <div className="div-block-5">
-                    <div className="text-block-4">{item.category}</div>
-                    <div className="div-block-32">
-                      <div className="div-block-33">
-                        <img
-                          className="img-2"
-                          alt="arrow"
-                          src="./arrow.png"
-                        />
-                        <h1 className="heading-2">{item.title}</h1>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              ))}
+<section className="work">
+  {Array.from({ length: Math.ceil(portfolioItems.length / 2) }).map((_, rowIndex) => (
+    <div
+      className={`w-layout-grid row${rowIndex + 1}`}
+      key={rowIndex}
+    >
+      {portfolioItems.slice(rowIndex * 2, rowIndex * 2 + 2).map((item) => (
+        <a
+          key={item.id}
+          href={item.link}
+          className="projects w-inline-block"
+        >
+          <div className="img-hold">
+            <img
+              src={item.imageSrc}
+              alt={item.title}
+              className={`image-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+            />
+          </div>
+          <div className="div-block-5">
+            <div className="text-block-4">{item.category}</div>
+            <div className="div-block-32">
+              <div className="div-block-33">
+                <img
+                  className="img-2"
+                  alt="arrow"
+                  src="./arrow.png"
+                />
+                <h1 className="heading-2">{item.title}</h1>
+              </div>
             </div>
-          ))}
-        </section>
+          </div>
+        </a>
+      ))}
+    </div>
+  ))}
+</section>
+
       </div>
     </section>
   );

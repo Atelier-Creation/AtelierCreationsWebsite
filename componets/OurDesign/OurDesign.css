@@ -85,9 +85,10 @@
 .black-box img{
     position: absolute;
     bottom: 35px;
-    right: 25px;
+    right: 0;
     height: 50px;
     width: 200px;
+    object-fit: contain;
 }
 
 @media (max-width: 1024px) {
@@ -136,9 +137,10 @@
   
     .black-box img {
       width: 150px;
-      height: auto;
-      right: 20px;
-      bottom: 20px;
+      height: 50px;
+      right: 10px;
+      bottom: 10px;
+      object-fit: contain;
     }
   
     .our-design-container-image-inside-text h3 {
