@@ -328,7 +328,12 @@ useEffect(() => {
   if (!card || !cardFront || !cardBack || !revealSection) return;
 
   const isMobile = window.innerWidth <= 768;
+  const rotationValue = { y: 0 };
+  let isScrolling = false;
+  let scrollEndTimeout;
+  let tiltIntensity = 1;
 
+  // Set initial styles
   gsap.set(revealSection, {
     opacity: 1,
     scale: 1.1,
@@ -338,19 +343,14 @@ useEffect(() => {
 
   gsap.set(card, { transformStyle: "preserve-3d" });
 
-  const rotationValue = { y: 0 };
-  let isScrolling = false;
-  let scrollEndTimeout;
-  let tiltIntensity = 1;
-
-  // Scroll animation
+  // Scroll-based flip timeline
   const flipTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".card-wrapper",
       start: "top 30%",
       end: "bottom+=550%",
       scrub: 1,
-      pin: true, // ✅ Always pin, even on mobile
+      pin: true, // ✅ Always pin
       anticipatePin: 0,
       onEnterBack: () => {
         gsap.to(rotationValue, { y: 0, duration: 1 });
@@ -371,14 +371,18 @@ useEffect(() => {
       ease: "power3.inOut",
       duration: 1.45,
     })
-    .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
+    .to(card, {
+      scale: 16,
+      ease: "power3.inOut",
+      duration: 2,
+    }, "<")
     .to(revealSection, {
       opacity: 1,
       ease: "power2.out",
       duration: 1.5,
     }, "-=0.5");
 
-  // Sync rotation manually
+  // Sync visual transform manually
   let frameId;
   const syncRotation = () => {
     gsap.set(card, { rotationY: rotationValue.y });
@@ -400,7 +404,7 @@ useEffect(() => {
   };
   syncRotation();
 
-  // Tilt logic
+  // Mouse tilt
   const applyTilt = (clientX, clientY) => {
     const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
     const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
@@ -433,33 +437,43 @@ useEffect(() => {
     }
   };
 
-  // ✅ Mobile tap-to-flip fallback
+  // ✅ Smooth mobile tap timeline
   const handleMobileTap = () => {
-    gsap.to(rotationValue, {
-      y: 180,
-      duration: 1.2,
-      ease: "power3.inOut",
-    });
+    const mobileScale = window.innerWidth <= 480 ? 6 : 8;
+    const mobileTimeline = gsap.timeline();
 
-    gsap.to(card, {
-      scale: 16,
-      duration: 1.8,
-      ease: "power3.inOut",
-    });
-
-    gsap.to(revealSection, {
-      opacity: 1,
-      clipPath: "circle(100% at center)",
-      backgroundColor: "#141414",
-      duration: 1.5,
-      ease: "power3.out",
-    });
+    mobileTimeline
+      .to(rotationValue, {
+        y: 180,
+        duration: 1.2,
+        ease: "power3.inOut",
+        onUpdate: () => {
+          gsap.set(card, { rotationY: rotationValue.y });
+          if (rotationValue.y > 90) {
+            cardFront.style.visibility = "hidden";
+            cardBack.style.visibility = "visible";
+          }
+        },
+      })
+      .to(card, {
+        scale: mobileScale,
+        duration: 1.5,
+        ease: "power3.inOut",
+      }, "<")
+      .to(revealSection, {
+        opacity: 1,
+        clipPath: "circle(100% at center)",
+        backgroundColor: "#141414",
+        duration: 1.5,
+        ease: "power3.out",
+      }, "-=1.2");
   };
 
   if (isMobile) {
     card.addEventListener("touchstart", handleMobileTap);
   }
 
+  // Listeners
   window.addEventListener("scroll", ScrollTrigger.refresh);
   window.addEventListener("resize", ScrollTrigger.refresh);
   document.addEventListener("mousemove", handleMouseMove);
@@ -469,18 +483,21 @@ useEffect(() => {
   // ✅ Cleanup
   return () => {
     cancelAnimationFrame(frameId);
+    flipTimeline.kill();
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseleave", handleMouseLeave);
     document.removeEventListener("touchmove", handleTouchMove);
     window.removeEventListener("scroll", ScrollTrigger.refresh);
     window.removeEventListener("resize", ScrollTrigger.refresh);
+
     if (isMobile) {
       card.removeEventListener("touchstart", handleMobileTap);
     }
-    flipTimeline.kill();
-    ScrollTrigger.getAll().forEach((t) => t.kill());
   };
 }, []);
+
 
 
   return (
