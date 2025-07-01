@@ -4,7 +4,7 @@ import image1 from '../../src/assets/portfolioGridImage/gridImage1.jpg'
 import image2 from '../../src/assets/portfolioGridImage/image1.jpg'
 import image3 from '../../src/assets/portfolioGridImage/image2.jpg'
 import image4 from '../../src/assets/portfolioGridImage/image3.jpg'
-import { gridData } from "../PortfolioGrid/PortfolioGrid";
+import { portfolioItems } from "../PortfolioSection/PortfolioSection";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { useLocation } from "react-router-dom";
@@ -31,28 +31,31 @@ function GridOverView() {
     
         return () => container.removeEventListener("wheel", onWheel);
       }, []);
-      const currentIndex = gridData.findIndex(item => item.head === projectName);
-      const nextIndex = (currentIndex + 1) % gridData.length; // loop
-      const nextProject = gridData[nextIndex];
+      const currentIndex = portfolioItems.findIndex(item => item.title === projectName);
+      const nextIndex = (currentIndex + 1) % portfolioItems.length; // loop
+      const nextProject = portfolioItems[nextIndex];
   return (
     <div className='grid-overview-container'ref={scrollContainer}>
       <div className='data-details-section'>
         <h1>{data.title}</h1>
         <div className='data-details-para'>
-            <p>Equispace collaborated with IBM to create a truly inclusive and accessible environment, ensuring compliance with the Rights of Persons with Disabilities (RPWD) Act. Our expertise in accessibility solutions helped transform IBM’s spaces into barrier-free, adaptive, and safe environments for all individuals.</p>
-            <p>Through our partnership, IBM has taken a significant step towards creating workplaces that are truly inclusive, ensuring equal access for everyone.</p>
+            <p>{data.about}</p>
+            <p>{data.about2}</p>
         </div>
-        <div className='data-sevices'>
-            <h4>Services</h4>
-            <p>Tactile Installations</p>
-            <p>Braille Signages</p>
-            <p>Emergency evacuation wheel chair</p>
-            <p>Evacuation maps & Floor Directory</p>
-        </div>
-        <div className='data-sevices'>
-            <h4>Location</h4>
-            <p>IBM RPWD works - Kolkata, Mumbai, Pune, Ahmadabad, Gurgaon, Noida, Kochi, Hyderabad, Bengaluru</p>
-        </div>
+        {data?.service?.length > 0 && (
+  <div className='data-sevices'>
+    <h4>Services</h4>
+    {data.service.map((serviceItem, index) => (
+      <p key={index}>{serviceItem}</p>
+    ))}
+  </div>
+)}
+  {data?.loc && (
+    <div className='data-sevices'>
+      <h4>Location</h4>
+      <p>{data.loc}</p>
+    </div>
+  )}
       </div>
       <div className='data-overview-images'>
       <div className='data-overview-images'>
@@ -77,9 +80,20 @@ function GridOverView() {
 </a>
         </div>
         <hr className="grid-overview-hr-line"/>
-        <h1>{nextProject.head}</h1>
-        <img src={nextProject.image} alt={nextProject.head}  style={{ cursor: 'pointer' }} onClick={() => navigate(`/${nextProject.head}`)}/>
-        <h6 onClick={() => navigate(`/${nextProject.head}`)} style={{cursor:"pointer"}}>NEXT PROJECT</h6>
+        <h1>{nextProject.title}</h1>
+        <img src={nextProject.imageSrc?.[0]} alt={nextProject.title}  style={{ cursor: 'pointer' }} onClick={() =>
+  navigate(`/${nextProject.title}`, { state: { data: nextProject } })
+}
+/>
+<h6
+  onClick={() =>
+    navigate(`/${nextProject.title}`, { state: { data: nextProject } })
+  }
+  style={{ cursor: "pointer" }}
+>
+  NEXT PROJECT
+</h6>
+
       </div>
 
     </div>
