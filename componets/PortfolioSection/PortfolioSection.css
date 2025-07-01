@@ -3,6 +3,16 @@ html {
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
 }
+.portfolio-row {
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  grid-template-rows: auto;
+  justify-items: stretch;
+  margin-left: 6rem;
+  margin-right: 6rem;
+  overflow: visible;
+}
+
 .img-hold {
   aspect-ratio: 3 / 2;
   border-radius: 1.2vw;
@@ -16,7 +26,7 @@ html {
   grid-column-gap: 6rem;
   grid-row-gap: 4rem !important;
   flex-flow: column;
-  height: auto !important;
+  height: auto;
   padding-top: 4vw;
   padding-bottom: 15vw;
   display: flex

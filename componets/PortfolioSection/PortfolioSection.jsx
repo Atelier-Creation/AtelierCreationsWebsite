@@ -476,10 +476,8 @@ const PortfolioSection = () => {
 
 <section className="work">
   {Array.from({ length: Math.ceil(portfolioItems.length / 2) }).map((_, rowIndex) => (
-    <div
-      className={`w-layout-grid row${rowIndex + 1}`}
-      key={rowIndex}
-    >
+    <div className={`portfolio-row row${rowIndex + 1} w-layout-grid`} key={rowIndex}>
+
       {portfolioItems.slice(rowIndex * 2, rowIndex * 2 + 2).map((item) => (
         <a
           key={item.id}
