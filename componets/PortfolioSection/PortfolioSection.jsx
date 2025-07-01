@@ -341,6 +341,7 @@ useEffect(() => {
   let scrollEndTimeout;
   let tiltIntensity = 1;
 
+  // GSAP timeline with ScrollTrigger
   const flipTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".card-wrapper",
@@ -351,27 +352,18 @@ useEffect(() => {
       anticipatePin: 0,
       onEnterBack: () => {
         gsap.to(rotationValue, { y: 0, duration: 1 });
-        gsap.to({ tilt: 1 }, {
-          tilt: 1,
-          duration: 1,
-          onUpdate: () => (tiltIntensity = 1),
-        });
+        tiltIntensity = 1;
       },
       onUpdate: ({ progress }) => {
         isScrolling = true;
         clearTimeout(scrollEndTimeout);
-        scrollEndTimeout = setTimeout(() => {
-          isScrolling = false;
-        }, 300);
-
+        scrollEndTimeout = setTimeout(() => (isScrolling = false), 300);
         tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
-
-        // Force update to rotation in case onUpdate isn't firing enough
-        gsap.set(card, { rotationY: rotationValue.y });
       },
     },
   });
 
+  // Flip and scale animations
   flipTimeline
     .to(rotationValue, {
       y: 180,
@@ -396,19 +388,20 @@ useEffect(() => {
     .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
     .to(revealSection, { opacity: 1, ease: "power2.out", duration: 1.5 }, "-=0.5");
 
-  // Mouse tilt logic
-  const handleMouseMove = (e) => {
-    if (isScrolling) return;
-
-    const offsetX = (e.clientX - window.innerWidth / 2) / (50 / tiltIntensity);
-    const offsetY = (e.clientY - window.innerHeight / 2) / (50 / tiltIntensity);
-
+  // Mouse and touch based tilt effect
+  const applyTilt = (clientX, clientY) => {
+    const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
+    const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
     gsap.to(card, {
       rotationX: offsetY,
       rotationY: rotationValue.y - offsetX,
       ease: "power1.out",
       duration: 0.3,
     });
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isScrolling) applyTilt(e.clientX, e.clientY);
   };
 
   const handleMouseLeave = () => {
@@ -421,24 +414,37 @@ useEffect(() => {
     });
   };
 
-  // Fallback: force refresh on scrollbar drag
-  const handleScroll = () => {
-    ScrollTrigger.refresh();
-    gsap.set(card, { rotationY: rotationValue.y });
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 1 && !isScrolling) {
+      const touch = e.touches[0];
+      applyTilt(touch.clientX, touch.clientY);
+    }
   };
+
+  // Manual animation frame loop to sync scroll updates
+  let frameId;
+  const animateFrame = () => {
+    gsap.set(card, { rotationY: rotationValue.y });
+    frameId = requestAnimationFrame(animateFrame);
+  };
+  animateFrame();
 
   document.addEventListener("mousemove", handleMouseMove);
   document.addEventListener("mouseleave", handleMouseLeave);
-  window.addEventListener("scroll", handleScroll);
+  document.addEventListener("touchmove", handleTouchMove);
+  window.addEventListener("scroll", ScrollTrigger.refresh);
 
   return () => {
+    cancelAnimationFrame(frameId);
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseleave", handleMouseLeave);
-    window.removeEventListener("scroll", handleScroll);
+    document.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("scroll", ScrollTrigger.refresh);
     flipTimeline.kill();
     ScrollTrigger.getAll().forEach((t) => t.kill());
   };
 }, []);
+
 
 
 
