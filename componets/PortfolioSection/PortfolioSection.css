@@ -6690,6 +6690,10 @@ figcaption {
   width: auto;
   height: auto;
 }
+.img-hold img {
+  height: -webkit-fill-available;
+  object-fit: cover;
+}
 
 .img-hold {
   aspect-ratio: 3 / 2;
