@@ -331,6 +331,7 @@ useEffect(() => {
   gsap.set(revealSection, {
     opacity: 1,
     scale: 1.1,
+    backgroundColor: "#141414",
     clipPath: "circle(0% at center)",
   });
 

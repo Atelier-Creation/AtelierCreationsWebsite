@@ -12541,3 +12541,93 @@ figcaption {
 .logo-hold {
   will-change: transform;
 }
+/* ==== Responsive Styles ==== */
+
+@media screen and (max-width: 1024px) {
+  .portfolio-row {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .img-hold {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio-row {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .work {
+    padding: 2rem 1rem 4rem ;
+    gap: 2rem;
+  }
+
+  .img-hold {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .card_section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card-wrapper {
+    padding: 2rem 1rem;
+    height: auto;
+  }
+
+  .testimonial,
+  .review1, .review2 {
+    padding: 1rem;
+    font-size: 14px;
+  }
+
+  .frame-card {
+    scale: 0.85;
+  }
+  .s2{
+    padding: 0rem 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .frame-card {
+    scale: 0.75;
+  }
+  .review-holder-3{
+    display: none;
+  }
+
+  .img-hold {
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+  }
+
+  .portfolio {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .img-2{
+    transform: none;
+    opacity: 1;
+  }
+  .heading-2{
+    transform: translateX(-10px);
+  }
+  .work-holder{
+    transform: scale(1, 1) !important;
+  }
+}
