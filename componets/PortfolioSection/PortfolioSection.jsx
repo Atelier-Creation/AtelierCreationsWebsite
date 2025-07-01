@@ -381,9 +381,6 @@ const PortfolioSection = () => {
   const navigate = useNavigate()
 
 useEffect(() => {
-  window.addEventListener("load", () => {
-  ScrollTrigger.refresh();
-});
   const card = cardRef.current;
   const cardFront = cardFrontRef.current;
   const cardBack = cardBackRef.current;
@@ -396,7 +393,7 @@ useEffect(() => {
   let scrollEndTimeout;
   let tiltIntensity = 1;
 
-  // Set initial styles
+  // Set initial reveal styles
   gsap.set(revealSection, {
     opacity: 1,
     scale: 1.1,
@@ -406,14 +403,15 @@ useEffect(() => {
 
   gsap.set(card, { transformStyle: "preserve-3d" });
 
-  // Scroll-based flip timeline
+  // Scroll-based GSAP flip
   const flipTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".card-wrapper",
       start: "top 30%",
       end: "bottom+=550%",
       scrub: 1,
-      pin: true, // ✅ Always pin
+      pin: true,
+      pinType: isMobile ? "transform" : "fixed", // ✅ key for mobile
       anticipatePin: 0,
       onEnterBack: () => {
         gsap.to(rotationValue, { y: 0, duration: 1 });
@@ -431,21 +429,22 @@ useEffect(() => {
   flipTimeline
     .to(rotationValue, {
       y: 180,
+      duration: 1.4,
       ease: "power3.inOut",
-      duration: 1.45,
     })
     .to(card, {
       scale: 16,
-      ease: "power3.inOut",
       duration: 2,
+      ease: "power3.inOut",
     }, "<")
     .to(revealSection, {
       opacity: 1,
-      ease: "power2.out",
+      clipPath: "circle(100% at center)",
       duration: 1.5,
+      ease: "power2.out",
     }, "-=0.5");
 
-  // Sync visual transform manually
+  // Sync rotation visually
   let frameId;
   const syncRotation = () => {
     gsap.set(card, { rotationY: rotationValue.y });
@@ -467,7 +466,7 @@ useEffect(() => {
   };
   syncRotation();
 
-  // Mouse tilt
+  // Tilt (optional, mostly for desktop)
   const applyTilt = (clientX, clientY) => {
     const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
     const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
@@ -500,50 +499,15 @@ useEffect(() => {
     }
   };
 
-  // ✅ Smooth mobile tap timeline
-  const handleMobileTap = () => {
-    const mobileScale = window.innerWidth <= 480 ? 6 : 8;
-    const mobileTimeline = gsap.timeline();
-
-    mobileTimeline
-      .to(rotationValue, {
-        y: 180,
-        duration: 1.2,
-        ease: "power3.inOut",
-        onUpdate: () => {
-          gsap.set(card, { rotationY: rotationValue.y });
-          if (rotationValue.y > 90) {
-            cardFront.style.visibility = "hidden";
-            cardBack.style.visibility = "visible";
-          }
-        },
-      })
-      .to(card, {
-        scale: mobileScale,
-        duration: 1.5,
-        ease: "power3.inOut",
-      }, "<")
-      .to(revealSection, {
-        opacity: 1,
-        clipPath: "circle(100% at center)",
-        backgroundColor: "#141414",
-        duration: 1.5,
-        ease: "power3.out",
-      }, "-=1.2");
-  };
-
-  if (isMobile) {
-    card.addEventListener("touchstart", handleMobileTap);
-  }
-
-  // Listeners
+  // Add listeners
   window.addEventListener("scroll", ScrollTrigger.refresh);
   window.addEventListener("resize", ScrollTrigger.refresh);
+  window.addEventListener("load", ScrollTrigger.refresh);
   document.addEventListener("mousemove", handleMouseMove);
   document.addEventListener("mouseleave", handleMouseLeave);
   document.addEventListener("touchmove", handleTouchMove);
 
-  // ✅ Cleanup
+  // Cleanup
   return () => {
     cancelAnimationFrame(frameId);
     flipTimeline.kill();
@@ -554,12 +518,10 @@ useEffect(() => {
     document.removeEventListener("touchmove", handleTouchMove);
     window.removeEventListener("scroll", ScrollTrigger.refresh);
     window.removeEventListener("resize", ScrollTrigger.refresh);
-
-    if (isMobile) {
-      card.removeEventListener("touchstart", handleMobileTap);
-    }
+    window.removeEventListener("load", ScrollTrigger.refresh);
   };
 }, []);
+
 
 
 
