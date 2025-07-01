@@ -3,6 +3,9 @@ html {
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
 }
+.row8{
+  margin-bottom:4rem;
+}
 .portfolio-row {
   grid-column-gap: 4rem;
   grid-row-gap: 4rem;
