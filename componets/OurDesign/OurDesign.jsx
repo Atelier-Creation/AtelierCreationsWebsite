@@ -1,11 +1,9 @@
-import React from 'react'
 import './OurDesign.css'
 import image1 from '../../src/assets/portfolioGridImage/design.jpg'
 import image2 from '../../src/assets/portfolioGridImage/design1.jpg'
 import image3 from '../../src/assets/portfolioGridImage/design2.jpeg'
 import image4 from '../../src/assets/portfolioGridImage/design3.jpg'
 import image5 from '../../src/assets/portfolioGridImage/design4.jpg'
-import logo from '../../src/assets/home/header-logo.png'
 
 const data = [
   { id: 1, image: image2, header: "Interior Work", para: "We specialize in interior work that blends functionality with inclusivity, ensuring every space is accessible and adaptive" },
@@ -55,7 +53,7 @@ function OurDesign() {
             {row.length === 1 && (
                         <div className='black-box'>
           <h1>AND MANY MORE ...</h1>
-          <img src={logo} alt="logo" />
+          <img src='/logo1.svg' alt="logo" style={{filter:'contrast(0.5)'}} />
         </div>
               
             )}

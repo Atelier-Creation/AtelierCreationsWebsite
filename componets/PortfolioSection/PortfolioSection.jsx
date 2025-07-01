@@ -343,6 +343,24 @@ const testimonials = [
     wrapperClass: "review2-copy-copy",
   },
   {
+    name: "Tanuj Ahuja",
+    title: "Tech Lead",
+    rating: "4.9",
+    quote:
+      "Equispace consistently delivers designs that meet and exceed national accessibility standards.",
+    ellipseClass: "ellipse-7",
+    wrapperClass: "review1-copy1",
+  },
+  {
+    name: "Purav Jha",
+    title: "Software developer",
+    rating: "4.6",
+    quote:
+      "Their attention to detail and knowledge of RPWD compliance gave us complete confidence in the process.",
+    ellipseClass: "ellipse-6",
+    wrapperClass: "review2-copy-copy",
+  },
+  {
     name: "Rishav Sha",
     title: "Sushruta",
     rating: "4.9",
@@ -362,112 +380,188 @@ const PortfolioSection = () => {
   const revealSectionRef = useRef(null);
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const card = cardRef.current;
-    const cardFront = cardFrontRef.current;
-    const cardBack = cardBackRef.current;
-    const revealSection = revealSectionRef.current;
+useEffect(() => {
+  window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
+  const card = cardRef.current;
+  const cardFront = cardFrontRef.current;
+  const cardBack = cardBackRef.current;
+  const revealSection = revealSectionRef.current;
+  if (!card || !cardFront || !cardBack || !revealSection) return;
 
-    if (!card || !cardFront || !cardBack || !revealSection) return;
+  const isMobile = window.innerWidth <= 768;
+  const rotationValue = { y: 0 };
+  let isScrolling = false;
+  let scrollEndTimeout;
+  let tiltIntensity = 1;
 
-    gsap.set(revealSection, {
-      opacity: 1,
-      scale: 1.1,
-      clipPath: "circle(0% at center)",
-    });
-    gsap.set(card, { transformStyle: "preserve-3d" });
+  // Set initial styles
+  gsap.set(revealSection, {
+    opacity: 1,
+    scale: 1.1,
+    backgroundColor: "#141414",
+    clipPath: "circle(0% at center)",
+  });
 
-    const rotationValue = { y: 0 };
-    let isScrolling = false;
-    let scrollEndTimeout;
-    let tiltIntensity = 1;
+  gsap.set(card, { transformStyle: "preserve-3d" });
 
-    const flipTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".card-wrapper",
-        start: "top 30%",
-        end: "bottom+=550%",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 0,
-        onEnterBack: () => {
-          gsap.to(rotationValue, { y: 0, duration: 1 });
-          gsap.to(
-            { tilt: 1 },
-            { tilt: 1, duration: 1, onUpdate: () => (tiltIntensity = 1) }
-          );
-        },
-        onUpdate: ({ progress }) => {
-          isScrolling = true;
-          clearTimeout(scrollEndTimeout);
-          scrollEndTimeout = setTimeout(() => (isScrolling = false), 300);
-          tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
-        },
+  // Scroll-based flip timeline
+  const flipTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".card-wrapper",
+      start: "top 30%",
+      end: "bottom+=550%",
+      scrub: 1,
+      pin: true, // ✅ Always pin
+      anticipatePin: 0,
+      onEnterBack: () => {
+        gsap.to(rotationValue, { y: 0, duration: 1 });
+        tiltIntensity = 1;
       },
-    });
+      onUpdate: ({ progress }) => {
+        isScrolling = true;
+        clearTimeout(scrollEndTimeout);
+        scrollEndTimeout = setTimeout(() => (isScrolling = false), 300);
+        tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
+      },
+    },
+  });
 
-    flipTimeline
+  flipTimeline
+    .to(rotationValue, {
+      y: 180,
+      ease: "power3.inOut",
+      duration: 1.45,
+    })
+    .to(card, {
+      scale: 16,
+      ease: "power3.inOut",
+      duration: 2,
+    }, "<")
+    .to(revealSection, {
+      opacity: 1,
+      ease: "power2.out",
+      duration: 1.5,
+    }, "-=0.5");
+
+  // Sync visual transform manually
+  let frameId;
+  const syncRotation = () => {
+    gsap.set(card, { rotationY: rotationValue.y });
+
+    if (rotationValue.y > 90) {
+      cardFront.style.visibility = "hidden";
+      cardBack.style.visibility = "visible";
+      gsap.to(revealSection, {
+        clipPath: "circle(100% at center)",
+        duration: 1.5,
+        ease: "power3.out",
+      });
+    } else {
+      cardFront.style.visibility = "visible";
+      cardBack.style.visibility = "hidden";
+    }
+
+    frameId = requestAnimationFrame(syncRotation);
+  };
+  syncRotation();
+
+  // Mouse tilt
+  const applyTilt = (clientX, clientY) => {
+    const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
+    const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
+    gsap.to(card, {
+      rotationX: offsetY,
+      rotationY: rotationValue.y - offsetX,
+      ease: "power1.out",
+      duration: 0.3,
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isScrolling) applyTilt(e.clientX, e.clientY);
+  };
+
+  const handleMouseLeave = () => {
+    if (isScrolling) return;
+    gsap.to(card, {
+      rotationX: 0,
+      rotationY: rotationValue.y,
+      ease: "power2.out",
+      duration: 0.5,
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 1 && !isScrolling) {
+      const touch = e.touches[0];
+      applyTilt(touch.clientX, touch.clientY);
+    }
+  };
+
+  // ✅ Smooth mobile tap timeline
+  const handleMobileTap = () => {
+    const mobileScale = window.innerWidth <= 480 ? 6 : 8;
+    const mobileTimeline = gsap.timeline();
+
+    mobileTimeline
       .to(rotationValue, {
         y: 180,
+        duration: 1.2,
         ease: "power3.inOut",
-        duration: 1.45,
         onUpdate: () => {
           gsap.set(card, { rotationY: rotationValue.y });
           if (rotationValue.y > 90) {
             cardFront.style.visibility = "hidden";
             cardBack.style.visibility = "visible";
-            gsap.to(revealSection, {
-              clipPath: "circle(100% at center)",
-              duration: 2,
-              ease: "power3.out",
-            });
-          } else {
-            cardFront.style.visibility = "visible";
-            cardBack.style.visibility = "hidden";
           }
         },
       })
-      .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
-      .to(
-        revealSection,
-        { opacity: 1, ease: "power2.out", duration: 1.5 },
-        "-=0.5"
-      );
+      .to(card, {
+        scale: mobileScale,
+        duration: 1.5,
+        ease: "power3.inOut",
+      }, "<")
+      .to(revealSection, {
+        opacity: 1,
+        clipPath: "circle(100% at center)",
+        backgroundColor: "#141414",
+        duration: 1.5,
+        ease: "power3.out",
+      }, "-=1.2");
+  };
 
-    const handleMouseMove = (e) => {
-      if (isScrolling) return;
-      const offsetX =
-        (e.clientX - window.innerWidth / 2) / (50 / tiltIntensity);
-      const offsetY =
-        (e.clientY - window.innerHeight / 2) / (50 / tiltIntensity);
-      gsap.to(card, {
-        rotationX: offsetY,
-        rotationY: rotationValue.y - offsetX,
-        ease: "power1.out",
-        duration: 0.3,
-      });
-    };
+  if (isMobile) {
+    card.addEventListener("touchstart", handleMobileTap);
+  }
 
-    const handleMouseLeave = () => {
-      if (isScrolling) return;
-      gsap.to(card, {
-        rotationX: 0,
-        rotationY: rotationValue.y,
-        ease: "power2.out",
-        duration: 0.5,
-      });
-    };
+  // Listeners
+  window.addEventListener("scroll", ScrollTrigger.refresh);
+  window.addEventListener("resize", ScrollTrigger.refresh);
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseleave", handleMouseLeave);
+  document.addEventListener("touchmove", handleTouchMove);
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
+  // ✅ Cleanup
+  return () => {
+    cancelAnimationFrame(frameId);
+    flipTimeline.kill();
+    ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      flipTimeline.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseleave", handleMouseLeave);
+    document.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("scroll", ScrollTrigger.refresh);
+    window.removeEventListener("resize", ScrollTrigger.refresh);
+
+    if (isMobile) {
+      card.removeEventListener("touchstart", handleMobileTap);
+    }
+  };
+}, []);
+
+
 
   return (
     <section id="portfolio" className="portfolio">
@@ -484,8 +578,8 @@ const PortfolioSection = () => {
                 className="grommet-iconsprojects"
               />
               <div className="frame-24">
-                <div className="text-4">PROJECTS</div>
-                <div className="text-5">⠏⠗⠕⠚⠑⠉⠞⠎</div>
+                <div className="text-4">PORTFOLIO</div>
+                <div className="text-5">⠏⠕⠗⠞⠋⠕⠇⠊⠕</div>
               </div>
             </div>
             <div className="card-back" ref={cardBackRef}></div>
@@ -548,7 +642,7 @@ const PortfolioSection = () => {
 
       </div>
       {/* Featured Work */}
-      <div className="work-holder" ref={revealSectionRef} style={{marginTop:'40rem'}}>
+      <div className="work-holder" ref={revealSectionRef}>
         <section className="s2">
           <div className="text-head">
             <h1 className="featured-work">Featured Work</h1>

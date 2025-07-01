@@ -4519,6 +4519,10 @@ figcaption {
   overflow: hidden;
   transform: rotate(0);
   box-shadow: 0 0 3rem 1rem #0000001f;
+  will-change: transform;
+  /* backface-visibility: hidden; */
+  transform-style: preserve-3d;
+  transform: translateZ(0);
 }
 
 .grommet-iconsprojects {
@@ -5848,6 +5852,7 @@ figcaption {
 .work-holder {
   flex-flow: column;
   display: flex;
+  margin-top: 40 ;
 }
 
 .card_section {
@@ -11530,7 +11535,8 @@ figcaption {
   }
 
   .text-block-8 {
-    display: none;
+            font-size: 4vw;
+        text-align: left;
   }
 
   .text-block-9 {
@@ -12540,4 +12546,172 @@ figcaption {
 .about_image_div img,
 .logo-hold {
   will-change: transform;
+}
+/* ==== Responsive Styles ==== */
+
+@media screen and (max-width: 1024px) {
+  .portfolio-row {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .img-hold {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio-row {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .work {
+    padding: 2rem 1rem 4rem ;
+    gap: 2rem;
+  }
+
+  .img-hold {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .card_section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card-wrapper {
+    padding: 2rem 1rem;
+    height: auto;
+  }
+
+  .testimonial,
+  .review1, .review2 {
+    padding: 1rem;
+    font-size: 14px;
+  }
+
+  .frame-card {
+    scale: 0.85;
+  }
+  .s2{
+    padding: 0rem 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .frame-card {
+    scale: 0.75;
+  }
+  .review-holder-3{
+    display: none;
+  }
+
+  .img-hold {
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+  }
+
+  .portfolio {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .img-2{
+    transform: none;
+    opacity: 1;
+  }
+  .heading-2{
+    transform: translateX(-10px);
+  }
+  .work-holder{
+    margin-top: 50rem;
+    transform: scale(1, 1) !important;
+  }
+}
+
+
+/* ===== AboutEquispace Mobile Responsive ===== */
+@media screen and (max-width: 768px) {
+  .div-block-11 {
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .about_image_div {
+    transform: none !important;
+  }
+
+  .logo-hold {
+    transform: none !important;
+  }
+
+  .about-but-head {
+    width: 100%;
+    text-align: center;
+  }
+
+  .heading-about-us {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .text-2-copy {
+    font-size: 2rem;
+  }
+
+  .about-us-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .logo-hold {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+
+  .image-12 {
+    width: 100px;
+    height: auto;
+  }
+
+  .about_image_div {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .ibm-click {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .pin-spacer{
+    inset: 160px 0px 0px !important;
+  }
+
+  .button_new-copy {
+    justify-content: center;
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
 }
