@@ -231,10 +231,12 @@
   
     .black-box h1 {
       font-size: 7vw;
+      padding: 0 !important;
     }
   
     .black-box img {
-      width: 120px;
+      width: 70px;
+      margin-bottom: 1rem;
     }
   }
   @media (max-width: 768px) {
