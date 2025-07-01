@@ -1,4 +1,3 @@
-import React from 'react'
 import './OurClient.css'
 import c1 from '../../src/assets/portfolioGridImage/c1.png'
 import c2 from '../../src/assets/portfolioGridImage/c2.png'
