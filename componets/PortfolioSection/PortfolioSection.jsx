@@ -283,6 +283,24 @@ const testimonials = [
     wrapperClass: "review2-copy-copy",
   },
   {
+    name: "Tanuj Ahuja",
+    title: "Tech Lead",
+    rating: "4.9",
+    quote:
+      "Equispace consistently delivers designs that meet and exceed national accessibility standards.",
+    ellipseClass: "ellipse-7",
+    wrapperClass: "review1-copy1",
+  },
+  {
+    name: "Purav Jha",
+    title: "Software developer",
+    rating: "4.6",
+    quote:
+      "Their attention to detail and knowledge of RPWD compliance gave us complete confidence in the process.",
+    ellipseClass: "ellipse-6",
+    wrapperClass: "review2-copy-copy",
+  },
+  {
     name: "Rishav Sha",
     title: "Head of Design",
     rating: "4.9",
@@ -302,112 +320,127 @@ const PortfolioSection = () => {
   const revealSectionRef = useRef(null);
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const card = cardRef.current;
-    const cardFront = cardFrontRef.current;
-    const cardBack = cardBackRef.current;
-    const revealSection = revealSectionRef.current;
+useEffect(() => {
+  const card = cardRef.current;
+  const cardFront = cardFrontRef.current;
+  const cardBack = cardBackRef.current;
+  const revealSection = revealSectionRef.current;
 
-    if (!card || !cardFront || !cardBack || !revealSection) return;
+  if (!card || !cardFront || !cardBack || !revealSection) return;
 
-    gsap.set(revealSection, {
-      opacity: 1,
-      scale: 1.1,
-      clipPath: "circle(0% at center)",
-    });
-    gsap.set(card, { transformStyle: "preserve-3d" });
+  gsap.set(revealSection, {
+    opacity: 1,
+    scale: 1.1,
+    clipPath: "circle(0% at center)",
+  });
 
-    const rotationValue = { y: 0 };
-    let isScrolling = false;
-    let scrollEndTimeout;
-    let tiltIntensity = 1;
+  gsap.set(card, { transformStyle: "preserve-3d" });
 
-    const flipTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".card-wrapper",
-        start: "top 30%",
-        end: "bottom+=550%",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 0,
-        onEnterBack: () => {
-          gsap.to(rotationValue, { y: 0, duration: 1 });
-          gsap.to(
-            { tilt: 1 },
-            { tilt: 1, duration: 1, onUpdate: () => (tiltIntensity = 1) }
-          );
-        },
-        onUpdate: ({ progress }) => {
-          isScrolling = true;
-          clearTimeout(scrollEndTimeout);
-          scrollEndTimeout = setTimeout(() => (isScrolling = false), 300);
-          tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
-        },
+  const rotationValue = { y: 0 };
+  let isScrolling = false;
+  let scrollEndTimeout;
+  let tiltIntensity = 1;
+
+  const flipTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".card-wrapper",
+      start: "top 30%",
+      end: "bottom+=550%",
+      scrub: 1,
+      pin: true,
+      anticipatePin: 0,
+      onEnterBack: () => {
+        gsap.to(rotationValue, { y: 0, duration: 1 });
+        gsap.to({ tilt: 1 }, {
+          tilt: 1,
+          duration: 1,
+          onUpdate: () => (tiltIntensity = 1),
+        });
       },
+      onUpdate: ({ progress }) => {
+        isScrolling = true;
+        clearTimeout(scrollEndTimeout);
+        scrollEndTimeout = setTimeout(() => {
+          isScrolling = false;
+        }, 300);
+
+        tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
+
+        // Force update to rotation in case onUpdate isn't firing enough
+        gsap.set(card, { rotationY: rotationValue.y });
+      },
+    },
+  });
+
+  flipTimeline
+    .to(rotationValue, {
+      y: 180,
+      ease: "power3.inOut",
+      duration: 1.45,
+      onUpdate: () => {
+        gsap.set(card, { rotationY: rotationValue.y });
+        if (rotationValue.y > 90) {
+          cardFront.style.visibility = "hidden";
+          cardBack.style.visibility = "visible";
+          gsap.to(revealSection, {
+            clipPath: "circle(100% at center)",
+            duration: 2,
+            ease: "power3.out",
+          });
+        } else {
+          cardFront.style.visibility = "visible";
+          cardBack.style.visibility = "hidden";
+        }
+      },
+    })
+    .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
+    .to(revealSection, { opacity: 1, ease: "power2.out", duration: 1.5 }, "-=0.5");
+
+  // Mouse tilt logic
+  const handleMouseMove = (e) => {
+    if (isScrolling) return;
+
+    const offsetX = (e.clientX - window.innerWidth / 2) / (50 / tiltIntensity);
+    const offsetY = (e.clientY - window.innerHeight / 2) / (50 / tiltIntensity);
+
+    gsap.to(card, {
+      rotationX: offsetY,
+      rotationY: rotationValue.y - offsetX,
+      ease: "power1.out",
+      duration: 0.3,
     });
+  };
 
-    flipTimeline
-      .to(rotationValue, {
-        y: 180,
-        ease: "power3.inOut",
-        duration: 1.45,
-        onUpdate: () => {
-          gsap.set(card, { rotationY: rotationValue.y });
-          if (rotationValue.y > 90) {
-            cardFront.style.visibility = "hidden";
-            cardBack.style.visibility = "visible";
-            gsap.to(revealSection, {
-              clipPath: "circle(100% at center)",
-              duration: 2,
-              ease: "power3.out",
-            });
-          } else {
-            cardFront.style.visibility = "visible";
-            cardBack.style.visibility = "hidden";
-          }
-        },
-      })
-      .to(card, { scale: 16, ease: "power3.inOut", duration: 2 }, "<")
-      .to(
-        revealSection,
-        { opacity: 1, ease: "power2.out", duration: 1.5 },
-        "-=0.5"
-      );
+  const handleMouseLeave = () => {
+    if (isScrolling) return;
+    gsap.to(card, {
+      rotationX: 0,
+      rotationY: rotationValue.y,
+      ease: "power2.out",
+      duration: 0.5,
+    });
+  };
 
-    const handleMouseMove = (e) => {
-      if (isScrolling) return;
-      const offsetX =
-        (e.clientX - window.innerWidth / 2) / (50 / tiltIntensity);
-      const offsetY =
-        (e.clientY - window.innerHeight / 2) / (50 / tiltIntensity);
-      gsap.to(card, {
-        rotationX: offsetY,
-        rotationY: rotationValue.y - offsetX,
-        ease: "power1.out",
-        duration: 0.3,
-      });
-    };
+  // Fallback: force refresh on scrollbar drag
+  const handleScroll = () => {
+    ScrollTrigger.refresh();
+    gsap.set(card, { rotationY: rotationValue.y });
+  };
 
-    const handleMouseLeave = () => {
-      if (isScrolling) return;
-      gsap.to(card, {
-        rotationX: 0,
-        rotationY: rotationValue.y,
-        ease: "power2.out",
-        duration: 0.5,
-      });
-    };
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseleave", handleMouseLeave);
+  window.addEventListener("scroll", handleScroll);
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
+  return () => {
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseleave", handleMouseLeave);
+    window.removeEventListener("scroll", handleScroll);
+    flipTimeline.kill();
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+  };
+}, []);
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      flipTimeline.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+
 
   return (
     <section id="portfolio" className="portfolio">
