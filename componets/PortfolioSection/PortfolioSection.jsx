@@ -291,7 +291,7 @@ const PortfolioSection = () => {
       scrollTrigger: {
         trigger: ".card-wrapper",
         start: "top 30%",
-        end: "bottom+=250%",
+        end: "bottom+=350%",
         scrub: 1,
         pin: true,
         anticipatePin: 0,
