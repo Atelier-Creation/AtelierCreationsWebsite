@@ -99,7 +99,7 @@ const backgroundStrips = [
   },
 ];
 
-const portfolioItems = [
+export const portfolioItems = [
   {
     id: 1,
     title: "Trigun Studio",
