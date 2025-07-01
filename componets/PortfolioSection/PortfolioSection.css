@@ -16,7 +16,7 @@ html {
   grid-column-gap: 6rem;
   grid-row-gap: 4rem !important;
   flex-flow: column;
-  height: auto;
+  height: auto !important;
   padding-top: 4vw;
   padding-bottom: 15vw;
   display: flex
