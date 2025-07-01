@@ -388,12 +388,11 @@ useEffect(() => {
   if (!card || !cardFront || !cardBack || !revealSection) return;
 
   const isMobile = window.innerWidth <= 768;
-  const rotationValue = { y: 0 };
-  let isScrolling = false;
-  let scrollEndTimeout;
-  let tiltIntensity = 1;
+  let rotationValue = { y: 0 };
+  let frameId;
 
-  // Set initial reveal styles
+  // Initial styles
+  gsap.set(card, { transformStyle: "preserve-3d", rotationY: 0 });
   gsap.set(revealSection, {
     opacity: 1,
     scale: 1.1,
@@ -401,51 +400,6 @@ useEffect(() => {
     clipPath: "circle(0% at center)",
   });
 
-  gsap.set(card, { transformStyle: "preserve-3d" });
-
-  // Scroll-based GSAP flip
-  const flipTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".card-wrapper",
-      start: "top 30%",
-      end: "bottom+=550%",
-      scrub: 1,
-      pin: true,
-      pinType: isMobile ? "transform" : "fixed", // ✅ key for mobile
-      anticipatePin: 0,
-      onEnterBack: () => {
-        gsap.to(rotationValue, { y: 0, duration: 1 });
-        tiltIntensity = 1;
-      },
-      onUpdate: ({ progress }) => {
-        isScrolling = true;
-        clearTimeout(scrollEndTimeout);
-        scrollEndTimeout = setTimeout(() => (isScrolling = false), 300);
-        tiltIntensity = Math.max(1 - progress * 0.7, 0.3);
-      },
-    },
-  });
-
-  flipTimeline
-    .to(rotationValue, {
-      y: 180,
-      duration: 1.4,
-      ease: "power3.inOut",
-    })
-    .to(card, {
-      scale: 16,
-      duration: 2,
-      ease: "power3.inOut",
-    }, "<")
-    .to(revealSection, {
-      opacity: 1,
-      clipPath: "circle(100% at center)",
-      duration: 1.5,
-      ease: "power2.out",
-    }, "-=0.5");
-
-  // Sync rotation visually
-  let frameId;
   const syncRotation = () => {
     gsap.set(card, { rotationY: rotationValue.y });
 
@@ -466,61 +420,73 @@ useEffect(() => {
   };
   syncRotation();
 
-  // Tilt (optional, mostly for desktop)
-  const applyTilt = (clientX, clientY) => {
-    const offsetX = (clientX - window.innerWidth / 2) / (50 / tiltIntensity);
-    const offsetY = (clientY - window.innerHeight / 2) / (50 / tiltIntensity);
-    gsap.to(card, {
-      rotationX: offsetY,
-      rotationY: rotationValue.y - offsetX,
-      ease: "power1.out",
-      duration: 0.3,
+  // === 🖥 Desktop Scroll Trigger ===
+  let flipTimeline;
+  if (!isMobile) {
+    flipTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".card-wrapper",
+        start: "top 30%",
+        end: "bottom+=550%",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 0,
+        onUpdate: ({ progress }) => {
+          rotationValue.y = 180 * progress;
+        },
+      },
     });
-  };
 
-  const handleMouseMove = (e) => {
-    if (!isScrolling) applyTilt(e.clientX, e.clientY);
-  };
+    flipTimeline
+      .to(rotationValue, { y: 180, duration: 1.45, ease: "power3.inOut" })
+      .to(card, { scale: 16, duration: 2, ease: "power3.inOut" }, "<")
+      .to(revealSection, { opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.5");
+  }
 
-  const handleMouseLeave = () => {
-    if (isScrolling) return;
-    gsap.to(card, {
-      rotationX: 0,
-      rotationY: rotationValue.y,
-      ease: "power2.out",
-      duration: 0.5,
-    });
-  };
+  // === 📱 Mobile Swipe-to-Flip ===
+  if (isMobile) {
+    let startX = 0;
+    let endX = 0;
+    let hasFlipped = false;
 
-  const handleTouchMove = (e) => {
-    if (e.touches.length === 1 && !isScrolling) {
-      const touch = e.touches[0];
-      applyTilt(touch.clientX, touch.clientY);
-    }
-  };
+    const handleTouchStart = (e) => {
+      startX = e.touches[0].clientX;
+    };
 
-  // Add listeners
-  window.addEventListener("scroll", ScrollTrigger.refresh);
-  window.addEventListener("resize", ScrollTrigger.refresh);
-  window.addEventListener("load", ScrollTrigger.refresh);
-  document.addEventListener("mousemove", handleMouseMove);
-  document.addEventListener("mouseleave", handleMouseLeave);
-  document.addEventListener("touchmove", handleTouchMove);
+    const handleTouchEnd = (e) => {
+      endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
 
-  // Cleanup
+      if (Math.abs(diff) > 50) {
+        if (diff < 0 && !hasFlipped) {
+          // Swipe Left → Flip
+          rotationValue.y = 180;
+          hasFlipped = true;
+        } else if (diff > 0 && hasFlipped) {
+          // Swipe Right → Unflip
+          rotationValue.y = 0;
+          hasFlipped = false;
+        }
+      }
+    };
+
+    card.addEventListener("touchstart", handleTouchStart);
+    card.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      card.removeEventListener("touchstart", handleTouchStart);
+      card.removeEventListener("touchend", handleTouchEnd);
+    };
+  }
+
+  // Common cleanup
   return () => {
     cancelAnimationFrame(frameId);
-    flipTimeline.kill();
     ScrollTrigger.getAll().forEach((t) => t.kill());
-
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseleave", handleMouseLeave);
-    document.removeEventListener("touchmove", handleTouchMove);
-    window.removeEventListener("scroll", ScrollTrigger.refresh);
-    window.removeEventListener("resize", ScrollTrigger.refresh);
-    window.removeEventListener("load", ScrollTrigger.refresh);
+    if (flipTimeline) flipTimeline.kill();
   };
 }, []);
+
 
 
 
