@@ -321,6 +321,9 @@ const PortfolioSection = () => {
   const navigate = useNavigate()
 
 useEffect(() => {
+  window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
   const card = cardRef.current;
   const cardFront = cardFrontRef.current;
   const cardBack = cardBackRef.current;
