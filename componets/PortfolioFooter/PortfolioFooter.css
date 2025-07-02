@@ -192,6 +192,7 @@
   
     .copy-right-text p {
       font-size: 13px !important;
+      margin: 0;
     }
   }
   
@@ -206,6 +207,7 @@
     .portfolio-para {
       font-size: 14px;
       line-height: 1.5;
+      margin-top: 15px;
     }
   
     .address-head h4 {
