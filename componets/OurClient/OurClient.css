@@ -41,6 +41,7 @@
   @media (max-width: 768px) {
     .our-client-grid-container {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
     .our-clinet-container{
       gap: 2rem;
@@ -58,6 +59,7 @@
   @media (max-width: 480px) {
     .our-client-grid-container {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
   }
   

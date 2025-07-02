@@ -61,7 +61,7 @@
     }
   
     .faq-list {
-      width: 90%;
+      width: 85%;
     }
   
     .port-folio-faq-question {
@@ -92,11 +92,12 @@
     }
   
     .port-folio-faq-question {
-      font-size: 16px;
+      font-size: 1.2rem;
+      width: 300px;
     }
   
     .faq-toggle-icon {
-      font-size: 1.8rem;
+      font-size: 2.5rem;
     }
   
     .port-folio-faq-answer {
@@ -104,7 +105,7 @@
     }
   
     .faq-list {
-      width: 95%;
+      width: 85%;
     }
   }
   
