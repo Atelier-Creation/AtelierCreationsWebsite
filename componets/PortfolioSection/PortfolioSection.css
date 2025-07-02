@@ -4776,6 +4776,7 @@ figcaption {
 
 .card-wrapper {
   perspective: 1200px;
+   height: 100vh;
   flex: 0 auto;
   justify-content: center;
   align-items: center;
@@ -5862,6 +5863,7 @@ figcaption {
   align-items: center;
   width: 100%;
   height: 100vh;
+  min-height: 200vh;
   display: flex;
 }
 
