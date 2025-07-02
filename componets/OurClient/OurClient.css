@@ -54,6 +54,9 @@
         width: 150px;
         height: 80px;
     }
+    .client-data-grid img{
+      height: 30px;
+    }
   }
   
   @media (max-width: 480px) {

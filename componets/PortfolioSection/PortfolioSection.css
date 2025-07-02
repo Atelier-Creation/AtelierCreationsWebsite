@@ -12631,9 +12631,12 @@ figcaption {
   .img-2{
     transform: none;
     opacity: 1;
+    height: 40px;
+    width: 40px;
   }
   .heading-2{
     transform: translateX(-10px);
+    font-size: 9vw;
   }
   .work-holder{
     margin-top: 50rem;
