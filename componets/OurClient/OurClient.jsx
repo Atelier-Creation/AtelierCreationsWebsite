@@ -15,32 +15,43 @@ import c13 from '../../src/assets/BrandLogo/trigun-studio-interior.webp'
 const images = [
     c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13
 ]
+const chunkArray = (arr, size) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size)
+  );
 function OurClient() {
+  const imageRows = chunkArray(images, 5);
   return (
     <div className='our-clinet-container'>
       <h3>Our Trusted Clients</h3>
-        <div className='our-client-grid-container'>
-        {images.map((data, index) => {
-  // Conditionally assign class for c9 and c13
-  const specialClass =
-    index === 8
-      ? 'color-modified-img-c9'
-      : index === 12
-      ? 'color-modified-img-c13'
-      : '';
+      {imageRows.map((row, rowIndex) => (
+        <div
+          key={rowIndex}
+          className={`our-client-grid-row ${
+            row.length < 5 ? 'center-row' : ''
+          }`}
+        >
+          {row.map((data, index) => {
+            const globalIndex = rowIndex * 5 + index;
+            const specialClass =
+              globalIndex === 8
+                ? 'color-modified-img-c9'
+                : globalIndex === 12
+                ? 'color-modified-img-c13'
+                : '';
 
-  return (
-    <div key={index} className="client-data-grid">
-      <img
-        src={data}
-        className={`client-img ${specialClass}`}
-        alt={`client-${index + 1}`}
-      />
-    </div>
-  );
-})}
-
+            return (
+              <div key={index} className="client-data-grid">
+                <img
+                  src={data}
+                  className={`client-img ${specialClass}`}
+                  alt={`client-${globalIndex + 1}`}
+                />
+              </div>
+            );
+          })}
         </div>
+      ))}
     </div>
   )
 }
