@@ -32,8 +32,8 @@ function GridOverView() {
         return () => container.removeEventListener("wheel", onWheel);
       }, []);
       const currentIndex = portfolioItems.findIndex(item => item.title === projectName);
-      const nextIndex = (currentIndex + 1) % portfolioItems.length; // loop
-      const nextProject = portfolioItems[nextIndex];
+      const hasNext = currentIndex < portfolioItems.length - 1;
+      const nextProject = hasNext ? portfolioItems[currentIndex + 1] : null;
   return (
     <div className='grid-overview-container'ref={scrollContainer}>
       <div className='data-details-section'>
@@ -80,19 +80,30 @@ function GridOverView() {
 </a>
         </div>
         <hr className="grid-overview-hr-line"/>
-        <h1>{nextProject.title}</h1>
-        <img src={nextProject.imageSrc?.[0]} alt={nextProject.title}  style={{ cursor: 'pointer' }} onClick={() =>
-  navigate(`/${nextProject.title}`, { state: { data: nextProject } })
-}
-/>
-<h6
-  onClick={() =>
-    navigate(`/${nextProject.title}`, { state: { data: nextProject } })
-  }
-  style={{ cursor: "pointer" }}
->
-  NEXT PROJECT
-</h6>
+        {nextProject ? (
+  <>
+    <h1>{nextProject.title}</h1>
+    <img
+      src={nextProject.imageSrc?.[0]}
+      alt={nextProject.title}
+      style={{ cursor: 'pointer' }}
+      onClick={() =>
+        navigate(`/${nextProject.title}`, { state: { data: nextProject } })
+      }
+    />
+    <h6
+      onClick={() =>
+        navigate(`/${nextProject.title}`, { state: { data: nextProject } })
+      }
+      style={{ cursor: "pointer" }}
+    >
+      NEXT PROJECT
+    </h6>
+  </>
+) : (
+  <h1>AND MANY MORE...</h1>
+)}
+
 
       </div>
 

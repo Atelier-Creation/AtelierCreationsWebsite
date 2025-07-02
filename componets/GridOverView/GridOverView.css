@@ -73,11 +73,12 @@ body, html {
   .grid-overview-connect{
     width: 35vw;
     padding: 4vw;
-    padding-top: 9%;
+    padding-top: 6%;
     scroll-snap-align: start; /* Optional: for snapping */
     flex-shrink: 0;           /* Prevent shrinking */
     background:black;  
     margin-left: 5%;    /* Optional: background for visibility */
+    height: 100vh;
   }
   .grid-overview-connect h3{
     color: var(--neutral--white);

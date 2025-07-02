@@ -1,6 +1,8 @@
 import React from 'react'
 import './PortfolioFooter.css'
+import { useNavigate } from 'react-router-dom'
 function PortfolioFooter() {
+  const navigate = useNavigate()
   return (
     <div className='portfolio-footer-container'>
     <div className='footer-container-port'>
@@ -67,16 +69,16 @@ function PortfolioFooter() {
     </div>
     <hr className='footer-hr-line'/>
     <div className='copy-right-text'>
-        <p>Copyright © 2025 Equispace. All rights reserved.</p>
+        <p>Copyright © 2025 Atelier Creation. All rights reserved.</p>
         <a
   href="#top"
-  style={{ color: "white", cursor: "pointer", textDecoration: 'none' }}
+  style={{ color: "white", cursor: "pointer", textDecoration: 'underline' }}
 >
   Back to top
 </a>
 
 
-        <p>created by <strong style={{color:"white"}}>Atelier Creation</strong></p>
+        <p onClick={()=>navigate('/')}>created by <strong style={{color:"white",cursor:"pointer"}}>Atelier Creation</strong></p>
     </div>
     </div>
   )
