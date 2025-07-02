@@ -20,7 +20,7 @@
 .footer-left-text{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 .portfolio-left-conatiner h1{
     color: var(--neutral--white);
@@ -33,11 +33,12 @@
     color: var(--neutral--neutral-lighter);
     text-align: left;
     font-weight: 400;
-    width: 500px;
+    width: 420px;
+    font-size: 1.1vw;
 }
 .connect-link-footer{
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--neutral--white);
 }
 .address-head p{
@@ -45,7 +46,6 @@
     text-align: left;
     text-align: left;
     font-size: .9vw;
-    margin-bottom: 20px;
 }
 .address-head h4{
     color: var(--neutral--white);
@@ -89,7 +89,7 @@
     display: flex;
     flex-direction: column;
     width: 35%;
-    gap: 25px;
+    gap: 20px;
 }
 .footer-submit-btn{
     color: var(--neutral--black);
@@ -143,7 +143,7 @@
     }
   
     .portfolio-left-conatiner h1 {
-      font-size: 8vw;
+      font-size: 9vw;
     }
   
     .portfolio-para {
@@ -152,7 +152,7 @@
   
     .connect-link-footer {
       text-align: center;
-        font-size: 1.5rem;
+        font-size: 5vw;
     }
   
     .footer-left-connect-container {
@@ -165,9 +165,24 @@
       width: 100%;
     }
   
-    .address-head p,
+    .address-head p{
+      font-size: 12px;
+    }
     .address-head h4 {
-      font-size: 1rem;
+      font-size: 16px;
+    }
+    .text-and-input input{
+      padding-top: 1.5vh;
+      padding-bottom: 1.5vh;
+      width: 85%;
+      padding-left: 10px;
+    }
+    .footer-submit-btn{
+      height: 40px;
+    }
+    .text-and-input textarea {
+      width: 85%;
+      padding-left: 10px;
     }
   
     .copy-right-text {
@@ -175,8 +190,8 @@
       gap: 10px;
     }
   
-    .copy-right-text p {
-      font-size: 1rem;
+    .copy-right-text p,a {
+      font-size: 13px !important;
     }
   }
   
@@ -185,11 +200,12 @@
         width: 100%;
     }
     .portfolio-left-conatiner h1 {
-      font-size: 10vw;
+      font-size: 9vw;
     }
   
     .portfolio-para {
-      font-size: 4vw;
+      font-size: 14px;
+      line-height: 1.5;
     }
   
     .address-head h4 {
@@ -202,7 +218,8 @@
     }
   
     .footer-arrow-icon-text {
-      justify-content: center;
+      justify-content: flex-start;
+        align-items: center;
     }
   
     .footer-arrow-icon-text i {
