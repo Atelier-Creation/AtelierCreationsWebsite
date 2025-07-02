@@ -199,6 +199,8 @@
   @media (max-width: 600px) {
     .portfolio-footer-container{
         width: 100%;
+        margin-bottom: 0;
+        border-radius: 0;
     }
     .portfolio-left-conatiner h1 {
       font-size: 9vw;
