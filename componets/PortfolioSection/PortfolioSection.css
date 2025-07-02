@@ -3,6 +3,22 @@ html {
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
 }
+.card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.card-front, .card-back {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
 .row8{
   margin-bottom:4rem;
 }

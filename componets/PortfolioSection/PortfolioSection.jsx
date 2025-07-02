@@ -386,10 +386,26 @@ useEffect(() => {
   const front  = cardFrontRef.current;
   const back   = cardBackRef.current;
   const reveal = revealSectionRef.current;
-  if (!card || !front || !back || !reveal) return;
-
-  /* ---------- constants & mutable refs ---------- */
   const isMobile       = window.innerWidth <= 768;
+  if (!card || !front || !back || !reveal) return;
+  
+  if (isMobile) {
+    // Fallback: simple flip on tap (mobile)
+    front.style.visibility = "visible";
+    back.style.visibility = "hidden";
+
+    card.addEventListener("click", () => {
+      const flipped = card.classList.toggle("flipped");
+      front.style.visibility = flipped ? "hidden" : "visible";
+      back.style.visibility = flipped ? "visible" : "hidden";
+    });
+
+    return () => {
+      card.removeEventListener("click", () => {});
+    };
+  }
+  /* ---------- constants & mutable refs ---------- */
+
   const rotationValue  = { y: 0 };
   let   tiltIntensity  = 1;
   let   isScrolling    = false;
@@ -402,7 +418,7 @@ useEffect(() => {
     backgroundColor: "#141414",
     clipPath: "circle(0% at center)",
   });
-  gsap.set(card, { transformStyle: "preserve-3d" });
+  gsap.set(card, { transformStyle: "preserve-3d", willChange: "transform" });
 
   /* ---------- timeline ---------- */
   const tl = gsap.timeline({
@@ -412,7 +428,7 @@ useEffect(() => {
       end:   "bottom+=550%",
       scrub: true,                           // smoother than scrub: 1
       pin: true,
-      pinType: isMobile ? "transform" : "fixed",
+      pinType:"fixed",
       anticipatePin: 0,
       onEnterBack: () => gsap.to(rotationValue, { y: 0, duration: 1 }),
       onUpdate: ({ progress }) => {
