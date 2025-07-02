@@ -44,9 +44,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
-    .our-clinet-container{
-      gap: 2rem;
-    }
     .our-clinet-container h3{
           font-size: 2rem !important;
     font-weight: 700 !important;

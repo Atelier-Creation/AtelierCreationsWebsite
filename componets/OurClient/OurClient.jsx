@@ -1,3 +1,4 @@
+import React,{ useEffect, useState } from 'react'
 import './OurClient.css'
 import c1 from '../../src/assets/BrandLogo/being-social-mumbai.png'
 import c2 from '../../src/assets/BrandLogo/best-skincare-clinic-tune-aesthetics.webp'
@@ -20,7 +21,22 @@ const chunkArray = (arr, size) =>
     arr.slice(i * size, i * size + size)
   );
 function OurClient() {
-  const imageRows = chunkArray(images, 5);
+  const [itemsPerRow, setItemsPerRow] = useState(5);
+  useEffect(() => {
+    const updateItemsPerRow = () => {
+      const width = window.innerWidth;
+      if (width <= 768) {
+        setItemsPerRow(2); // Mobile view
+      } else {
+        setItemsPerRow(5); // Desktop view
+      }
+    };
+
+    updateItemsPerRow();
+    window.addEventListener('resize', updateItemsPerRow);
+    return () => window.removeEventListener('resize', updateItemsPerRow);
+  }, []);
+  const imageRows = chunkArray(images, itemsPerRow);
   return (
     <div className='our-clinet-container'>
       <h3>Our Trusted Clients</h3>
