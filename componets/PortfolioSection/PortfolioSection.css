@@ -9979,6 +9979,8 @@ figcaption {
   .div-block-5 {
     grid-column-gap: .5rem;
     grid-row-gap: .5rem;
+    margin: 0 auto;
+    width: 90%;
   }
 
   .heading-2 {
@@ -12577,7 +12579,7 @@ figcaption {
 
   .work {
     padding: 2rem 1rem 4rem ;
-    gap: 2rem;
+    gap: 2rem !important;
   }
 
   .img-hold {
@@ -12622,6 +12624,8 @@ figcaption {
   .img-hold {
     aspect-ratio: 4 / 3;
     border-radius: 10px;
+    margin: 0 auto;
+    width: 90%;
   }
 
   .portfolio {
