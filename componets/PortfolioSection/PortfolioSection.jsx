@@ -382,30 +382,33 @@ const PortfolioSection = () => {
   const navigate = useNavigate()
 
 useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
+    // Lenis Smooth Scroll Setup
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo-like
+      smooth: true,
+      smoothTouch: true,
+      direction: 'vertical',
+    });
+  
+    // Start the RAF Loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  
+    // Sync ScrollTrigger with Lenis scroll updates
+    lenis.on('scroll', ScrollTrigger.update);
   const card   = cardRef.current;
   const front  = cardFrontRef.current;
   const back   = cardBackRef.current;
   const reveal = revealSectionRef.current;
-  const isMobile       = window.innerWidth <= 768;
   if (!card || !front || !back || !reveal) return;
-  
-  if (isMobile) {
-    // Fallback: simple flip on tap (mobile)
-    front.style.visibility = "visible";
-    back.style.visibility = "hidden";
 
-    card.addEventListener("click", () => {
-      const flipped = card.classList.toggle("flipped");
-      front.style.visibility = flipped ? "hidden" : "visible";
-      back.style.visibility = flipped ? "visible" : "hidden";
-    });
-
-    return () => {
-      card.removeEventListener("click", () => {});
-    };
-  }
   /* ---------- constants & mutable refs ---------- */
-
+  const isMobile       = window.innerWidth <= 768;
   const rotationValue  = { y: 0 };
   let   tiltIntensity  = 1;
   let   isScrolling    = false;
@@ -418,7 +421,7 @@ useEffect(() => {
     backgroundColor: "#141414",
     clipPath: "circle(0% at center)",
   });
-  gsap.set(card, { transformStyle: "preserve-3d", willChange: "transform" });
+  gsap.set(card, { transformStyle: "preserve-3d" });
 
   /* ---------- timeline ---------- */
   const tl = gsap.timeline({
@@ -428,7 +431,7 @@ useEffect(() => {
       end:   "bottom+=550%",
       scrub: true,                           // smoother than scrub: 1
       pin: true,
-      pinType:"fixed",
+      pinType: isMobile ? "transform" : "fixed",
       anticipatePin: 0,
       onEnterBack: () => gsap.to(rotationValue, { y: 0, duration: 1 }),
       onUpdate: ({ progress }) => {
