@@ -55,6 +55,12 @@
     .client-data-grid img{
       height: 30px;
     }
+    .our-client-grid-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
   }
   
   @media (max-width: 480px) {
