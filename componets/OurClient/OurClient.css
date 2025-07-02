@@ -65,4 +65,10 @@
       gap: 10px;
     }
   }
+  .color-modified-img-c9 {
+    filter: invert(1) brightness(0.8);
+  }
+  .color-modified-img-c13 {
+    filter: invert(1) brightness(0.8);
+  }
   

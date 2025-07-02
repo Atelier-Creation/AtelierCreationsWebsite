@@ -1,27 +1,45 @@
 import './OurClient.css'
-import c1 from '../../src/assets/portfolioGridImage/c1.png'
-import c2 from '../../src/assets/portfolioGridImage/c2.png'
-import c3 from '../../src/assets/portfolioGridImage/c3.png'
-import c4 from '../../src/assets/portfolioGridImage/c4.png'
-import c5 from '../../src/assets/portfolioGridImage/c5.png'
-import c6 from '../../src/assets/portfolioGridImage/c6.png'
-import c7 from '../../src/assets/portfolioGridImage/c7.png'
-import c8 from '../../src/assets/portfolioGridImage/c8.png'
-import c9 from '../../src/assets/portfolioGridImage/c9.png'
-import c10 from '../../src/assets/portfolioGridImage/c10.png'
+import c1 from '../../src/assets/BrandLogo/being-social-mumbai.png'
+import c2 from '../../src/assets/BrandLogo/best-skincare-clinic-tune-aesthetics.webp'
+import c3 from '../../src/assets/BrandLogo/bs-logo-2x.webp'
+import c4 from '../../src/assets/BrandLogo/CandereLogoWhite.png'
+import c5 from '../../src/assets/BrandLogo/cropped-NGJ-LOGO-FINAL_png.png'
+import c6 from '../../src/assets/BrandLogo/goat-robotics-favicon.png'
+import c7 from '../../src/assets/BrandLogo/golden-gateway.png'
+import c8 from '../../src/assets/BrandLogo/light-bg-logo-j5PEJEGK.png'
+import c9 from '../../src/assets/BrandLogo/logo-mayon.webp'
+import c10 from '../../src/assets/BrandLogo/lyris-logo.png'
+import c11 from '../../src/assets/BrandLogo/nobuy_logo.png'
+import c12 from '../../src/assets/BrandLogo/sushruta_logo.webp'
+import c13 from '../../src/assets/BrandLogo/trigun-studio-interior.webp'
 const images = [
-    c1,c2,c3,c4,c5,c6,c7,c8,c9,c10
+    c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13
 ]
 function OurClient() {
   return (
     <div className='our-clinet-container'>
       <h3>Our Trusted Clients</h3>
         <div className='our-client-grid-container'>
-            {images.map((data,index)=>(
-                <div key={index} className='client-data-grid'>
-                    <img src={data}/>
-                </div>
-            ))}
+        {images.map((data, index) => {
+  // Conditionally assign class for c9 and c13
+  const specialClass =
+    index === 8
+      ? 'color-modified-img-c9'
+      : index === 12
+      ? 'color-modified-img-c13'
+      : '';
+
+  return (
+    <div key={index} className="client-data-grid">
+      <img
+        src={data}
+        className={`client-img ${specialClass}`}
+        alt={`client-${index + 1}`}
+      />
+    </div>
+  );
+})}
+
         </div>
     </div>
   )
